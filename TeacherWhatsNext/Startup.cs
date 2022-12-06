@@ -30,7 +30,7 @@ namespace TeacherWhatsNext
 
             services.AddControllers();
             services.AddTransient<IActivityRepository, ActivityRepository>();
-            //services.AddTransient<IUserRepository, UserRepository>();
+            services.AddTransient<IUserProfileRepository, UserProfileRepository>();
 
 
 
@@ -48,6 +48,13 @@ namespace TeacherWhatsNext
                 app.UseDeveloperExceptionPage();
                 app.UseSwagger();
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "TeacherWhatsNext v1"));
+
+                app.UseCors(options =>
+                {
+                    options.AllowAnyOrigin();
+                    options.AllowAnyMethod();
+                    options.AllowAnyHeader();
+                });
             }
 
             app.UseHttpsRedirection();

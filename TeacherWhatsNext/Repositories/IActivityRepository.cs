@@ -8,8 +8,8 @@ namespace TeacherWhatsNext
         public List<Activity> GetAll();
         public Activity GetById(int id);
         //public List<Activity> GetByUser(int userId);
-        //public void Insert(Activity activity);
-        //public void Update(Activity activity);
-        //public void Delete(int id);
+        public void Insert(Activity activity);
+        public void Update(Activity activity);
+        public void Delete(int id);
     }
 }

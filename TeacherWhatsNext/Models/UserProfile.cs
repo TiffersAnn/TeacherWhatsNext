@@ -27,7 +27,7 @@ namespace TeacherWhatsNext.Models
         
         [Required]
         public int UserTypeId { get; set; }
-        //public UserType UserType { get; set; }
+        public UserType UserType { get; set; }
 
         public string FullName
         {
