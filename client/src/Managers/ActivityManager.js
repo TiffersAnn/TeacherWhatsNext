@@ -6,7 +6,7 @@ export const getAllActivities = () => {
 };
 
 export const getActivityById = (id) => {
-    let post = fetch(`/api/Activity/${id}`)
+    let post = fetch(`${baseUrl}/${id}`)
         .then((res) => res.json());
 return post};
 

@@ -19,7 +19,7 @@ export default function ApplicationViews() {
             <Route path="/users" element={<UserProfileList />} />
             <Route path="/users/:id" element={<UserDetails />} />
             <Route path="/activities" element={<ActivityList />} />
-            <Route path="/activities/:id" element={<ActivityDetails />} />
+            <Route path="/activity/:id" element={<ActivityDetails />} />
             <Route path="/createActivity" element={<ActivityForm />} />
             <Route path="/deleteActivity/:id" element={<ActivityDelete />} />
             <Route path="/subjects" element={<SubjectList />} />
