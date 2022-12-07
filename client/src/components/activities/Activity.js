@@ -1,27 +1,43 @@
 import React from "react";
-import { Card, CardImg, CardBody } from "reactstrap";
+import { Card, CardBody } from "reactstrap";
 import { Link } from "react-router-dom";
 
 
 export const Activity = ({ activity }) => {
-  return (
-    <Card className="m-4">
-      <CardBody>
-        <Link to={`/posts/${activity.id}`}>
-            <strong>{activity.title}</strong>
-        </Link>
-        {/* <Link to={`/posts/${post.id}`}> */}
-            <p>Author: {activity.userProfile.displayName}</p>
-        {/* </Link> */}
-        <p>Subject: {activity.subject.name}</p>
-        <p>Time Left: {activity.timeLeft.amount}</p>
-        <p>Grade Level: {activity.grade.level}</p>
-        
-        {/* {post?.comments.length ? post?.comments?.map(comment => 
-            <p key={comment?.id} className="text-left px-2">Comment: {comment?.message}</p>) : ""} */}
-      
-        </CardBody>
 
-    </Card>
+//   return (
+//     <div style={{display:'flex', letterSpacing: '.5px', alignItems: 'center', margin: '45px', borderBottom: '1px solid blue', height: '30px', width: '500px', justifyContent: 'space-between'}}>
+//         <h5 style={{ marginRight: '15px' }}>{activity.title}</h5>
+        
+//     </div>
+// )
+  return (
+
+    
+      <div style={{display:'flex', letterSpacing: '.5px', alignItems: 'center', margin: '45px', borderBottom: '1px solid blue', height: '30px', width: '500px', justifyContent: 'space-between'}}>
+          <Link to={`/activities/${activity.id}`}>
+            
+          <h5 style={{ marginRight: '15px' }}>{activity.title}</h5></Link>
+          <p>{activity.subject.name}</p>
+    //     <p>Time Left: {activity.timeLeft.amount} mins</p>
+    //     <p>{activity.grade.level}</p>
+          
+      </div>
   );
+    // <Card className="m-4">
+    //   <CardBody>
+    //     <Link to={`/activities/${activity.id}`}>
+    //         <strong>{activity.title}</strong>
+    //     </Link>
+        
+    //     {/* <p>Author: {activity.userProfile.displayName}</p>
+    //     <p>Subject: {activity.subject.name}</p>
+    //     <p>Time Left: {activity.timeLeft.amount}</p>
+    //     <p>Grade Level: {activity.grade.level}</p> */}
+        
+              
+    //     </CardBody>
+
+    // </Card>
+  
 };

@@ -1,4 +1,4 @@
-const baseUrl = '/api/activity';
+const baseUrl = 'https://localhost:5001/api/Activity';
 
 export const getAllActivities = () => {
     return fetch(baseUrl)
@@ -6,7 +6,7 @@ export const getAllActivities = () => {
 };
 
 export const getActivityById = (id) => {
-    let post = fetch(`/api/activity/${id}`)
+    let post = fetch(`/api/Activity/${id}`)
         .then((res) => res.json());
 return post};
 

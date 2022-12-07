@@ -1,13 +1,13 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-
+import { getAllSubjects } from "../../Managers/SubjectManager";
+import { getAllGrades } from "../../Managers/GradeManager";
+import { getAllTimes } from "../../Managers/TimeManager";
 import { addActivity } from "../../Managers/ActivityManager";
+import { Link } from "react-router-dom";
 
 export const ActivityForm = () => {
-    /*
-        TODO: Add the correct default properties to the
-        initial state object
-    */
+    
     const [activity, update] = useState({
         Title: "",
         Content: "",
@@ -35,10 +35,7 @@ export const ActivityForm = () => {
     const localUser = localStorage.getItem("userProfile")
     const userObject = JSON.parse(localUser)
 
-    //let categoryHtml = ""
-    //document.getElementById("categories"). innerHTML = categoryHtml;
-
-
+    
     const handleSaveButtonClick = (event) => {
         event.preventDefault()
         
@@ -63,11 +60,11 @@ export const ActivityForm = () => {
 
     
     return (
-        <form className="activityForm">
+        <form className="activityForm"style={{marginLeft: "30px"}}>
             <h2 className="activityForm__Title">New Activity</h2>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="Title">Title:</label>
+                    <label htmlFor="Title">Title:  </label>
                     <input
                         required autoFocus
                         type="text"
@@ -83,7 +80,7 @@ export const ActivityForm = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="Content">Content:</label>
+                    <label htmlFor="Content">Content:  </label>
                     <input
                         required autoFocus
                         type="text"
@@ -99,7 +96,7 @@ export const ActivityForm = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="ImageLocation">Image URL:</label>
+                    <label htmlFor="ImageLocation">Image URL:  </label>
                     <input
                         autoFocus
                         type="text"
@@ -115,7 +112,7 @@ export const ActivityForm = () => {
             </fieldset> 
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="timeLeft">TimeLeft</label>
+                    <label htmlFor="timeLeft">TimeLeft:  </label>
                     <select required className="form-control" 
                             value={activity.TimeLeftId} 
                             onChange={(changeEvent) => {
@@ -130,7 +127,7 @@ export const ActivityForm = () => {
             </fieldset>  
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="subject">Grade Level</label>
+                    <label htmlFor="subject">Grade Level:  </label>
                     <select required className="form-control" 
                             value={activity.GradeId} 
                             onChange={(changeEvent) => {
@@ -139,13 +136,13 @@ export const ActivityForm = () => {
                                 update(copy)
                             }}>
                         <option value="0">Choose A Grade Level</option>
-                        {grades?.map(c => <option value={c.id}>{c.level}</option>)}
+                        {grades?.map(g => <option value={g.id}>{g.level}</option>)}
                     </select>
                 </div>         
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="subject">Subject</label>
+                    <label htmlFor="subject">Subject:  </label>
                     <select required className="form-control" 
                             value={activity.SubjectId} 
                             onChange={(changeEvent) => {
@@ -162,6 +159,10 @@ export const ActivityForm = () => {
             <button onClick={(clickEvent) => {handleSaveButtonClick(clickEvent)}} className="btn btn-primary">
                 Publish Activity
             </button>
+        
+        <div style={{marginLeft: '30px', marginTop:"20px"}}>
+        <Link to="/activities">Go Back</Link>
+        </div>
         </form>
     )
 }

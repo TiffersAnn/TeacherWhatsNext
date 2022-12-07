@@ -31,6 +31,12 @@ namespace TeacherWhatsNext
             services.AddControllers();
             services.AddTransient<IActivityRepository, ActivityRepository>();
             services.AddTransient<IUserProfileRepository, UserProfileRepository>();
+            services.AddTransient<ISubjectRepository, SubjectRepository>();
+            services.AddTransient<ITimeLeftRepository, TimeLeftRepository>();
+            services.AddTransient<IGradeRepository, GradeRepository>();
+            services.AddTransient<ICommentRepository, CommentRepository>();
+
+
 
 
 

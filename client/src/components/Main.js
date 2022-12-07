@@ -9,13 +9,17 @@ export default function Main() {
       position: "fixed",
       left: 0,
       right: 0,
-      top: "50%",
-      marginTop: "-0.5rem",
+      top: "20%",
+      marginTop: "50px",
       textAlign: "center",
       
-    }}>Hello</h1>
+    }}>Let's Find An Activity For You</h1>
     
     </div>
+    <div class = "synopsis" style={{marginLeft: "30px"}}>
+    <p>Sometimes you find yourself with 5, 10 or 15 minutes left in class and don't have the bandwidth to think on your feet.  </p>
+    </div>
+    {/* This is where Search will go!!! */}
     </>
   );
 }

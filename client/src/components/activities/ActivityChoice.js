@@ -1,17 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Activity } from "./Activity";
 import { getAllActivities } from "../../Managers/ActivityManager";
-import { Link } from "react-router-dom";
-import { useNavigate } from "react-router-dom";
 
-const ActivityList = () => {
-  const [activities, setActivities] = useState([]);
-  const navigate = useNavigate();
+const filteredActivities = () => {
 
-  const localUser = localStorage.getItem("userProfile")
-  const userObject = JSON.parse(localUser)
-
-  const getActivities = () => {
+const getActivities = () => {
     getAllActivities().then(allActivities => setActivities(allActivities));
   };
 
@@ -20,12 +13,10 @@ const ActivityList = () => {
     getActivities();
   }, []);
   console.log(activities)
-
   return (
     <>
-    <button className="btn btn-primary mt-3 mb-2" style={{marginLeft: '30px'}} onClick={() => navigate("/createActivity")}>Add New Activity</button>
     
-    <h1 style= {{textAlign: "center"}}>All Activities</h1>
+    <h1>Activities for You!</h1>
     <div className="container">
       <div className="row justify-content-center">
         <div className="cards-column">
@@ -39,6 +30,7 @@ const ActivityList = () => {
     </div>
     </>
   );
+
 };
 
-export default ActivityList;
+export default filteredActivities;

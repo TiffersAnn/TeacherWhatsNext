@@ -29,8 +29,8 @@ namespace TeacherWhatsNext
                             LEFT join grade g on a.gradeId = g.id
                             LEFT join timeLeft tl on a.timeLeftId = tl.id
                             LEFT join userProfile u on a.userProfileId = u.id;
-                            ";
-
+                            Order BY g.Level";
+                    //OrderBy may need to be altered!!
 
                     SqlDataReader reader = cmd.ExecuteReader();
 
