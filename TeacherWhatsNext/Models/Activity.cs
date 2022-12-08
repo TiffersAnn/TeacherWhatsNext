@@ -12,10 +12,11 @@ namespace TeacherWhatsNext
         [Required]
         public string Title { get; set; }
 
-        [Required]
+        
         public string ImageLocation { get; set; }
-
+        [Required]
         public string Content { get; set; }
+        public string ContentUrl { get; set; }
         public int SubjectId { get; set; }
         public int TimeLeftId { get; set; }
         public int GradeId { get; set; }

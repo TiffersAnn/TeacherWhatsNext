@@ -62,5 +62,11 @@ namespace TeacherWhatsNext
             _activityRepository.Delete(id);
             return NoContent();
         }
+
+        [HttpGet("search")]
+        public IActionResult Search(string q)
+        {
+            return Ok(_activityRepository.Search(q));
+        }
     }
 }

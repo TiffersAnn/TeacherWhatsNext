@@ -1,11 +1,20 @@
-import { useState } from "react";
-import { getActivityById } from "../../Managers/ActivityManager";
+import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { editActivity, getActivityById } from "../../Managers/ActivityManager";
+import { useParams } from "react-router-dom";
+import { getAllSubjects } from "../../Managers/SubjectManager";
+import { getAllGrades } from "../../Managers/GradeManager";
+import { getAllTimes } from "../../Managers/TimeManager";
+import React from "react";
+
+
 
 
 const ActivityEdit = () => {
     const [activity, update] = useState({
         title: "",
         content: "",
+        contentUrl: "",
         imageLocation: "",
         subjectId: "",
         timeLeftId: "",
@@ -34,10 +43,10 @@ const ActivityEdit = () => {
 
     useEffect(() => {
         getActivityById(id).then(update)        
-    }, [])
+    }, []);
     
 
-    //one step behind issue -- needed e.preventDefault();
+    
     function Edit(e) {
 
         e.preventDefault();
@@ -46,6 +55,7 @@ const ActivityEdit = () => {
             id: activity.id,
             title: activity.title,
             content: activity.content,
+            contentUrl: activity.contentUrl,
             imageLocation: activity.imageLocation,
             userProfileId: userObject.id,
             subjectId: activity.subjectId,
@@ -54,13 +64,13 @@ const ActivityEdit = () => {
             
         }
 
-        editPost(editedActivity).then(() => {
+        editActivity(editedActivity).then(() => {
             console.log("here?");
-            navigate(`/activities/${editedActivity.id}`)});        
+            navigate(`/activity/${editedActivity.id}`)});        
     }
 
     const Cancel = () => {
-        navigate(`/activities/${id}`)
+        navigate(`/activity/${id}`)
     }
 
     return (
@@ -68,15 +78,15 @@ const ActivityEdit = () => {
             <h2 className="postForm__Title">Edit Activity</h2>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="Title">Title:</label>
+                    <label htmlFor="Title">Title:   </label>
                     <input
                         required autoFocus
                         type="text"
                         className="form-control"
-                        placeholder="Post title"
-                        value={post.title}
+                        placeholder="Activity title"
+                        value={activity.title}
                         onChange={(changeEvent) => {
-                            const copy = {...post}
+                            const copy = {...activity}
                             copy.title = changeEvent.target.value
                             update(copy)
                         }} />
@@ -84,15 +94,15 @@ const ActivityEdit = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="Content">Content:</label>
+                    <label htmlFor="Content">Content:  </label>
                     <input
                         required autoFocus
                         type="text"
                         className="form-control"
-                        placeholder="Post content"
-                        value={post.content}
+                        placeholder="Activity content"
+                        value={activity.content}
                         onChange={(changeEvent) => {
-                            const copy = {...post}
+                            const copy = {...activity}
                             copy.content = changeEvent.target.value
                             update(copy)
                         }} />
@@ -100,7 +110,23 @@ const ActivityEdit = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="ImageLocation">Image URL:</label>
+                    <label htmlFor="ContentUrl">Content Url:  </label>
+                    <input
+                        required autoFocus
+                        type="text"
+                        className="form-control"
+                        placeholder="Link to Activity"
+                        value={activity.ContentUrl}
+                        onChange={(changeEvent) => {
+                            const copy = {...activity}
+                            copy.ContentUrl = changeEvent.target.value
+                            update(copy)
+                        }} />
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="ImageLocation">Image URL:   </label>
                     <input
                         autoFocus
                         type="text"
@@ -108,7 +134,7 @@ const ActivityEdit = () => {
                         placeholder="www.example.com"
                         value={activity.imageLocation}
                         onChange={(changeEvent) => {
-                            const copy = {...post}
+                            const copy = {...activity}
                             copy.imageLocation = changeEvent.target.value
                             update(copy)
                         }} />
@@ -116,7 +142,7 @@ const ActivityEdit = () => {
             </fieldset>   
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="timeLeft">Time Left</label>
+                    <label htmlFor="timeLeft">Time Left     </label>
                     <select required className="form-control" 
                             value={activity.TimeLeftId} 
                             onChange={(changeEvent) => {
@@ -131,7 +157,7 @@ const ActivityEdit = () => {
             </fieldset>  
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="subject">Grade Level</label>
+                    <label htmlFor="subject">Grade Level     </label>
                     <select required className="form-control" 
                             value={activity.GradeId} 
                             onChange={(changeEvent) => {
@@ -146,7 +172,7 @@ const ActivityEdit = () => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="subject">Subject</label>
+                    <label htmlFor="subject">Subject     </label>
                     <select required className="form-control" 
                             value={activity.SubjectId} 
                             onChange={(changeEvent) => {
@@ -165,6 +191,6 @@ const ActivityEdit = () => {
             <button onClick={ e => Cancel() }>Cancel</button>
         </form>
     )
-}
+};
 
 export default ActivityEdit;

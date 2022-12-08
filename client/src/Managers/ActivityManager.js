@@ -21,17 +21,22 @@ export const addActivity = (singleActivity) => {
   };
 
   export const deleteActivity = (id) => {
-    return fetch(`/api/activity/${id}`, {
+    return fetch(`${baseUrl}/${id}`, {
         method: "DELETE"
       })
   };
   
   export const editActivity = (activity) => {
-    return fetch(`/api/activity/${activity.id}`, {
+    return fetch(`${baseUrl}/${activity.id}`, {
         method: "PUT",
         headers: {
           "Content-Type": "application/json",
         },
         body: JSON.stringify(activity),
       });
+  };
+
+  export const searchActivities = (query)=> { 
+    return fetch(`${baseUrl}/search?q=${query}`)
+    .then((res)=> res.json())
   };

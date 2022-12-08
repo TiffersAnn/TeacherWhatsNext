@@ -23,13 +23,13 @@ namespace TeacherWhatsNext
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                          SELECT a.Id, a.Title, a.Content, a.ImageLocation, a.subjectId, a.timeLeftId, a.gradeId, a.UserProfileId, s.name AS Subject, tl.amount, g.level, u.DisplayName
+                          SELECT a.Id, a.Title, a.Content, a.ContentUrl, a.ImageLocation, a.subjectId, a.timeLeftId, a.gradeId, a.UserProfileId, s.name AS Subject, tl.amount, g.level, u.DisplayName
                             FROM Activity a
                             LEFT join subject s on a.subjectId = s.id
                             LEFT join grade g on a.gradeId = g.id
                             LEFT join timeLeft tl on a.timeLeftId = tl.id
-                            LEFT join userProfile u on a.userProfileId = u.id;
-                            Order BY g.Level";
+                            LEFT join userProfile u on a.userProfileId = u.id
+                           ";
                     //OrderBy may need to be altered!!
 
                     SqlDataReader reader = cmd.ExecuteReader();
@@ -42,7 +42,8 @@ namespace TeacherWhatsNext
                             Id = reader.GetInt32(reader.GetOrdinal("Id")),
                             Title = reader.GetString(reader.GetOrdinal("Title")),
                             Content = reader.GetString(reader.GetOrdinal("Content")),
-                            ImageLocation = reader.GetString(reader.GetOrdinal("ImageLocation")),
+                           ContentUrl = reader.GetString(reader.GetOrdinal("ContentUrl")),
+                           ImageLocation = reader.GetString(reader.GetOrdinal("ImageLocation")),
                             SubjectId = reader.GetInt32(reader.GetOrdinal("SubjectId")),
                             TimeLeftId = reader.GetInt32(reader.GetOrdinal("TimeLeftId")),
                             GradeId = reader.GetInt32(reader.GetOrdinal("GradeId")),
@@ -78,7 +79,7 @@ namespace TeacherWhatsNext
                 using (SqlCommand cmd = conn.CreateCommand())
                 {
                     cmd.CommandText = @"
-                           SELECT a.Id AS ActivityId, a.Title, a.Content, a.ImageLocation, a.subjectId, a.timeLeftId, a.gradeId, a.UserProfileId, s.name AS Subject, tl.amount, g.level, u.DisplayName
+                           SELECT a.Id AS ActivityId, a.Title, a.Content, a.ContentUrl, a.ImageLocation, a.subjectId, a.timeLeftId, a.gradeId, a.UserProfileId, s.name AS Subject, tl.amount, g.level, u.DisplayName
                             FROM Activity a
                             LEFT join subject s on a.subjectId = s.id
                             LEFT join grade g on a.gradeId = g.id
@@ -98,6 +99,7 @@ namespace TeacherWhatsNext
                             Id = reader.GetInt32(reader.GetOrdinal("ActivityId")),
                             Title = reader.GetString(reader.GetOrdinal("Title")),
                             Content = reader.GetString(reader.GetOrdinal("Content")),
+                            ContentUrl = reader.GetString(reader.GetOrdinal("ContentUrl")),
                             ImageLocation = reader.GetString(reader.GetOrdinal("ImageLocation")),
                             SubjectId = reader.GetInt32(reader.GetOrdinal("SubjectId")),
                             TimeLeftId = reader.GetInt32(reader.GetOrdinal("TimeLeftId")),
@@ -129,14 +131,14 @@ namespace TeacherWhatsNext
                 {
                     cmd.CommandText = @"
                         INSERT INTO Activity (
-                            Title, Content, ImageLocation, SubjectId, timeLeftId, gradeId, UserProfileId )
+                            Title, Content, ContentUrl, ImageLocation, SubjectId, timeLeftId, gradeId, UserProfileId )
                         OUTPUT INSERTED.ID
                         VALUES (
-                            @Title, @Content, @ImageLocation, @subjectId, @timeLeftId, @gradeId, @UserProfileId )";
+                            @Title, @Content, @ContentUrl, @ImageLocation, @subjectId, @timeLeftId, @gradeId, @UserProfileId )";
                     cmd.Parameters.AddWithValue("@Title", activity.Title);
                     cmd.Parameters.AddWithValue("@Content", activity.Content);
+                    cmd.Parameters.AddWithValue("@ContentUrl", activity.ContentUrl);
                     cmd.Parameters.AddWithValue("@ImageLocation", activity.ImageLocation);
-                                                   
                     cmd.Parameters.AddWithValue("@SubjectId", activity.SubjectId);
                     cmd.Parameters.AddWithValue("@timeLeftId", activity.TimeLeftId);
                     cmd.Parameters.AddWithValue("@gradeId", activity.GradeId);
@@ -170,7 +172,8 @@ namespace TeacherWhatsNext
                     {
                         cmd.CommandText = @"UPDATE Activity
                                                 SET Title = @title, 
-                                                    Content = @content, 
+                                                    Content = @content,
+                                                    ContentUrl = @contentUrl,
                                                     ImageLocation = @imageLocation, 
                                                     SubjectId = @subjectId,
                                                     TimeLeftId = @timeLeftId,
@@ -181,6 +184,7 @@ namespace TeacherWhatsNext
                         cmd.Parameters.AddWithValue("@id", activity.Id);
                         cmd.Parameters.AddWithValue("@title", activity.Title);
                         cmd.Parameters.AddWithValue("@content", activity.Content);
+                        cmd.Parameters.AddWithValue("@ContentUrl", activity.ContentUrl);
                         cmd.Parameters.AddWithValue("@imageLocation", activity.ImageLocation);
                         cmd.Parameters.AddWithValue("@subjectId", activity.SubjectId);
                         cmd.Parameters.AddWithValue("@timeLeftId", activity.TimeLeftId);
@@ -191,6 +195,55 @@ namespace TeacherWhatsNext
 
                         cmd.ExecuteNonQuery();
                     }
+                }
+            }
+        }
+        public List<Activity> Search(string criterion)
+        {
+            using (var conn = Connection)
+            {
+                conn.Open();
+                using (var cmd = conn.CreateCommand())
+                {
+                    var sql =
+                        @"SELECT a.Id, a.Title, a.Content, a.ContentUrl, a.ImageLocation, a.subjectId, a.timeLeftId, a.gradeId, a.UserProfileId, s.name AS Subject, tl.amount, g.level, u.DisplayName
+                            FROM Activity a
+                            LEFT join subject s on a.subjectId = s.id
+                            LEFT join grade g on a.gradeId = g.id
+                            LEFT join timeLeft tl on a.timeLeftId = tl.id
+                            LEFT join userProfile u on a.userProfileId = u.id
+                            Where a.subjectId LIKE @Criterion AND a.gradeId LIKE @Criterion AND a.timeLeftId LIKE @Criterion";
+
+                    
+
+                    cmd.CommandText = sql;
+                    DbUtils.AddParameter(cmd, "@Criterion", $"%{criterion}%");
+                    var reader = cmd.ExecuteReader();
+
+                    var activities = new List<Activity>();
+                    if (reader.Read())
+                    {
+                        activities.Add(new Activity()
+                        {
+                            Id = reader.GetInt32(reader.GetOrdinal("ActivityId")),
+                            Title = reader.GetString(reader.GetOrdinal("Title")),
+                            Content = reader.GetString(reader.GetOrdinal("Content")),
+                            ContentUrl = reader.GetString(reader.GetOrdinal("ContentUrl")),
+                            ImageLocation = reader.GetString(reader.GetOrdinal("ImageLocation")),
+                            SubjectId = reader.GetInt32(reader.GetOrdinal("SubjectId")),
+                            TimeLeftId = reader.GetInt32(reader.GetOrdinal("TimeLeftId")),
+                            GradeId = reader.GetInt32(reader.GetOrdinal("GradeId")),
+                            UserProfileId = reader.GetInt32(reader.GetOrdinal("UserProfileId")),
+                            UserProfile = new UserProfile(),
+                            Subject = new Subject(),
+                            TimeLeft = new TimeLeft(),
+                            Grade = new Grade()
+                        });
+                    }
+
+                    reader.Close();
+
+                    return activities;
                 }
             }
         }

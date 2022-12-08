@@ -11,6 +11,7 @@ export const ActivityForm = () => {
     const [activity, update] = useState({
         Title: "",
         Content: "",
+        ContentUrl: "",
         ImageLocation: ""
     })
 
@@ -43,6 +44,7 @@ export const ActivityForm = () => {
         const newActivity = {
             Title: activity.Title,
             Content: activity.Content,
+            ContentUrl: activity.ContentUrl,
             ImageLocation: activity.ImageLocation,
             UserProfileId: userObject.id,
             SubjectId: activity.SubjectId,
@@ -54,7 +56,7 @@ export const ActivityForm = () => {
         addActivity(newActivity)
             .then(r => r.json())
             .then(a => {
-                navigate(`/activities/${a.id}`)
+                navigate(`/activity/${a.id}`)
             })
     }
 
@@ -90,6 +92,22 @@ export const ActivityForm = () => {
                         onChange={(changeEvent) => {
                             const copy = {...activity}
                             copy.Content = changeEvent.target.value
+                            update(copy)
+                        }} />
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="ContentUrl">Content Url:  </label>
+                    <input
+                        required autoFocus
+                        type="text"
+                        className="form-control"
+                        placeholder="Link to Activity"
+                        value={activity.ContentUrl}
+                        onChange={(changeEvent) => {
+                            const copy = {...activity}
+                            copy.ContentUrl = changeEvent.target.value
                             update(copy)
                         }} />
                 </div>

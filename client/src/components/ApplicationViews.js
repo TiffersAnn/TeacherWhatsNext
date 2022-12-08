@@ -10,6 +10,9 @@ import ActivityDelete from "./activities/DeleteActivity";
 import SubjectList from "./subjects/SubjectList";
 import TimeList from "./times/TimeList";
 import GradeList from "./grades/GradeList";
+import { Comment } from "./comments/Comment";
+import ActivityEdit from "./activities/EditActivity";
+import ActivityChoice from "./activities/ActivityChoice";
 
 
 export default function ApplicationViews() {
@@ -22,10 +25,12 @@ export default function ApplicationViews() {
             <Route path="/activity/:id" element={<ActivityDetails />} />
             <Route path="/createActivity" element={<ActivityForm />} />
             <Route path="/deleteActivity/:id" element={<ActivityDelete />} />
+            <Route path="/editActivity/:id" element={<ActivityEdit />} />
             <Route path="/subjects" element={<SubjectList />} />
             <Route path="/times" element={<TimeList />} />
             <Route path="/grades" element={<GradeList />} />
-
+            <Route path="/activity/:id/comments" element={<Comment />} />
+            <Route path="/activity/search?q=${query}" element={<ActivityChoice />} />
 
             <Route path="*" element={<p>Whoops, nothing here...</p>} />
         </Routes>

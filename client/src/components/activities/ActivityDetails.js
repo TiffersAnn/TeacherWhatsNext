@@ -37,11 +37,11 @@ const ActivityDetails = () => {
         // getAllTags(id).then(setTag);
     });    
         
-    // useEffect(() => {
-    //     getAllGrades(id).then(setGrade);
-    //     getAllSubjects(id).then(setSubject);
-    //     getAllTimes(id).then(setTimeLeft);
-    // });
+    useEffect(() => {
+        getAllGrades(id).then(setGrade);
+        getAllSubjects(id).then(setSubject);
+        getAllTimes(id).then(setTimeLeft);
+    });
 
     
 
@@ -52,7 +52,7 @@ const ActivityDetails = () => {
 
    return (
      
-    
+    <Card className="details">
     <div className="container">
       <div className="row justify-content-center">
         <div className="col-sm-12 col-lg-6">
@@ -71,16 +71,19 @@ const ActivityDetails = () => {
           >
             <strong>{activity.title}</strong>
             </div>
-        <div>
+        <div style={{margin: "15px"}}>
             <p>Subject: {activity.subject?.name}</p>
+            <p>Time Left:  {activity.timeLeft?.amount} mins</p>
+            <p>Grade Level: {activity.grade?.level}</p>
         </div>
-          <CardImg top src={activity.imageLocation} alt={activity.title} onError={handleBrokenImage} />
-            <p>{timeLeft.amount}</p>
-            <CardText>
-                {activity?.content}
+        <div className="detail image" style={{display: "flex", justifyContent: "center"}}>
+          <CardImg style={{width: "300px", height: "200px", textalign: "middle"}} top src={activity.imageLocation} alt={activity.title} onError={handleBrokenImage} />
+        </div>    
+            <CardText style={{margin: "30px"}}>
+                {activity?.content}<br></br>
+                <a href={activity?.contentUrl}>Link to Activity!</a>
             </CardText>
-            {/* <p>{activity.content}</p> */}
-
+          
             {/* making sure a user only has access to the delete button if they were the one who created it */}
             {userObject.id == activity.userProfileId 
                 ? <>
@@ -97,7 +100,7 @@ const ActivityDetails = () => {
          <Link to="/activities">Go Back</Link>
             
             
-             <Link to={`/activities/${id}/comments`}>
+             <Link to={`/activity/${id}/comments`}>
                             View Comments
              </Link>
          <Link to={`/activities/${id}/addComment`}>
@@ -105,60 +108,16 @@ const ActivityDetails = () => {
              </Link>
                     
          </CardBody>
-
-    
-          <CardLink href={`/activities/${id}/addComment`}>Add Comment</CardLink>
         
-        <Card className="m-4"></Card>
+     
+      
         </div>
         </div>
     </div>
+    </Card>
   );
 };
  
 export default ActivityDetails;
     
-    {/* // return (
-    // <Card className="m-4" style={{width: '100%'}}>
-    //     <CardBody>
-    //         <strong>{activity.title}</strong>
-
-    //         <section>
-
-    //             <ListGroup flush>
-    //                 <ListGroupItemHeading>??</ListGroupItemHeading>
-    //                 { */}
-                        
-    {/* //                         activity?.subjects?.map((t) => {(<>
-    //                             <Card key={t.id}
-    //                                 style={{ */}
-    {/* //                                     width: '18rem'
-    //                                 }}
-    //                             >
-    //                                 <ListGroup flush>
-    //                                     <ListGroupItem>
-    //                                         <h6>{t.name}</h6><br />
-    //                                     </ListGroupItem>
-    //                                 </ListGroup>
-    //                             </Card></>
-    //                         )})
-                            
-    //                 }
-    //             </ListGroup>
-    //         </section>
-            
-    //             <p>Author: {activity.userProfile.displayName}               
-    //             </p>
-    //         {/* <div>
-    //             {activity.times.map((t) => <p>{t.amount}</p>)}
-    //             {activity.grades.map((g) => <p>{g.level}</p>)} 
-    //             {activity.subjects.map((s) => <p>{s.name}</p>)} 
-    //         </div> */}
-    //         {/* <div>
-    //             Tags: {post.tags.map((t) => <p>{t.name}</p>)} 
-    //         </div> */}
-    //         {/* <button onClick={(e) => {
-    //         navigate(`/addTag/${id}`)
-    //       }} style={{marginTop: '15px', width: '120px'}}
-    //       >Manage Tags</button> */}
-            
+    

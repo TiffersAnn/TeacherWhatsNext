@@ -1,16 +1,19 @@
 import React, { useState, useEffect } from "react";
 import { Activity } from "./Activity";
 import { getAllActivities } from "../../Managers/ActivityManager";
+import { getActivityById } from "../../Managers/ActivityManager";
 
-const filteredActivities = () => {
+const ActivityChoice = () => {
 
-const getActivities = () => {
+    const [activities, setActivities] = useState([]);
+
+const getAct = () => {
     getAllActivities().then(allActivities => setActivities(allActivities));
   };
 
 
   useEffect(() => {
-    getActivities();
+    getAct();
   }, []);
   console.log(activities)
   return (
@@ -30,7 +33,6 @@ const getActivities = () => {
     </div>
     </>
   );
-
 };
 
-export default filteredActivities;
+export default ActivityChoice;

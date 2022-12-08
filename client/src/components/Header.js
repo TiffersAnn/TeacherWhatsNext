@@ -16,10 +16,10 @@ export default function Header({ isLoggedIn, setIsLoggedIn }) {
   const toggle = () => setIsOpen(!isOpen);
 
   return (
-    <div>
+    <div style={{display: 'flex', flexDirection: 'row'}}>
       <Navbar color="light" light expand="md">
         <NavbarBrand >Teacher, What's Next?</NavbarBrand>
-        <NavbarToggler onClick={toggle} />
+        {/* <NavbarToggler onClick={toggle} /> */}
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar>
             { /* When isLoggedIn === true, we will render the Home link */}
@@ -40,12 +40,6 @@ export default function Header({ isLoggedIn, setIsLoggedIn }) {
                 <NavItem>
                   <NavLink tag={RRNavLink} to="/times">Times</NavLink>
                 </NavItem>
-                {/* <NavItem>
-                  <NavLink tag={RRNavLink} to="/subjects">Category Management</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={RRNavLink} to="/tag">Tag Management</NavLink>
-                </NavItem> */}
                 <NavItem>
                   <NavLink tag={RRNavLink} to="/users">User Profiles</NavLink>
                 </NavItem>
