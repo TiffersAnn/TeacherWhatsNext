@@ -36,7 +36,7 @@ export const addActivity = (singleActivity) => {
       });
   };
 
-  export const searchActivities = (query)=> { 
-    return fetch(`${baseUrl}/search?q=${query}`)
+  export const searchActivities = (subjectId, timeLeftId, gradeId)=> { 
+    return fetch(`${baseUrl}/search?subjectId=${subjectId}&timeLeftId=${timeLeftId}&gradeId=${gradeId}`)
     .then((res)=> res.json())
   };

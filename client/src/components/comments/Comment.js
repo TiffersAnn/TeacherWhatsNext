@@ -25,7 +25,7 @@ export const Comment = () => {
     },[]);
 
     return (
-        <div className= "m-5">
+        <div className= "CommentList">
             <h1>{activity.title}</h1> 
             
                 <CardLink href={`/activity/${id}`}>

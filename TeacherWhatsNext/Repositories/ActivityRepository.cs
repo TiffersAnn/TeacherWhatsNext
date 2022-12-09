@@ -198,7 +198,7 @@ namespace TeacherWhatsNext
                 }
             }
         }
-        public List<Activity> Search(string criterion)
+        public List<Activity> Search(int subjectId, int timeLeftId, int gradeId)
         {
             using (var conn = Connection)
             {
@@ -212,20 +212,25 @@ namespace TeacherWhatsNext
                             LEFT join grade g on a.gradeId = g.id
                             LEFT join timeLeft tl on a.timeLeftId = tl.id
                             LEFT join userProfile u on a.userProfileId = u.id
-                            Where a.subjectId LIKE @Criterion AND a.gradeId LIKE @Criterion AND a.timeLeftId LIKE @Criterion";
+                            Where a.subjectId LIKE @subjectId AND a.gradeId LIKE @gradeId AND a.timeLeftId LIKE @timeLeftId";
 
                     
 
                     cmd.CommandText = sql;
-                    DbUtils.AddParameter(cmd, "@Criterion", $"%{criterion}%");
+                    DbUtils.AddParameter(cmd, "@subjectId", $"%{subjectId}%");
+                    DbUtils.AddParameter(cmd, "@gradeId", $"%{gradeId}%");
+                    DbUtils.AddParameter(cmd, "@timeLeftId", $"%{timeLeftId}%");
+
+
+
                     var reader = cmd.ExecuteReader();
 
                     var activities = new List<Activity>();
-                    if (reader.Read())
+                    while (reader.Read())
                     {
                         activities.Add(new Activity()
                         {
-                            Id = reader.GetInt32(reader.GetOrdinal("ActivityId")),
+                            Id = reader.GetInt32(reader.GetOrdinal("Id")),
                             Title = reader.GetString(reader.GetOrdinal("Title")),
                             Content = reader.GetString(reader.GetOrdinal("Content")),
                             ContentUrl = reader.GetString(reader.GetOrdinal("ContentUrl")),

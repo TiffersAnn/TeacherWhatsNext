@@ -13,6 +13,7 @@ import GradeList from "./grades/GradeList";
 import { Comment } from "./comments/Comment";
 import ActivityEdit from "./activities/EditActivity";
 import ActivityChoice from "./activities/ActivityChoice";
+import { CommentNew } from "./comments/CommentNew";
 
 
 export default function ApplicationViews() {
@@ -30,7 +31,9 @@ export default function ApplicationViews() {
             <Route path="/times" element={<TimeList />} />
             <Route path="/grades" element={<GradeList />} />
             <Route path="/activity/:id/comments" element={<Comment />} />
-            <Route path="/activity/search?q=${query}" element={<ActivityChoice />} />
+            <Route path="/activity/:id/addComment" element={<CommentNew />} />
+
+            <Route path="/activity/search" element={<ActivityChoice />} />
 
             <Route path="*" element={<p>Whoops, nothing here...</p>} />
         </Routes>

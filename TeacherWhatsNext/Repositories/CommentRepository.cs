@@ -91,7 +91,7 @@ namespace TeacherWhatsNext.Repositories
                     cmd.CommandText = @"
                                     INSERT INTO Comment(Subject, Content, UserProfileId, ActivityId)
                                     OUTPUT INSERTED.ID
-                                    VALUES (@subject, @content, @userProfileId, @activityId, )";
+                                    VALUES (@subject, @content, @userProfileId, @activityId)";
                     cmd.Parameters.AddWithValue("@subject", newComment.Subject);
                     cmd.Parameters.AddWithValue("@content", newComment.Content);
                     cmd.Parameters.AddWithValue("@userProfileId", newComment.UserProfileId);

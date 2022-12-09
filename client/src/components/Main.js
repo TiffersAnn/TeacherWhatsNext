@@ -9,9 +9,9 @@ import { useNavigate } from "react-router-dom";
 
 
 const Main = () =>{
-  const [activities, setActivity] = useState([]);
+  
   const [query, setQuery] = useState("");
-  const [activity, getActivity] = useState({});
+  const [activity, setActivity] = useState({});
   const [subjects, setSubjects] = useState([]);
     const [times, setTimes] = useState([]);
     const [grades, setGrades] = useState([]);
@@ -34,10 +34,9 @@ const Main = () =>{
   const searchAllActivities = (e) => {
     e.preventDefault()  //necessary because using a form element, not necessary if using <section>
     searchActivities(query).then(activity => setActivity(activity))
-      .then(r => r.json())
-      .then(a => {
-                navigate(`/activity/search?q=${query}`)
-            })
+      .then(
+                navigate(`activity/search?=${query}`)
+            )
   };
 
   useEffect(() => {
@@ -46,7 +45,8 @@ const Main = () =>{
 
   return (
     <>
-    <div class = "section">
+    <div className='mainpage' style={{backgroundColor:'#f0f4f8'}}>
+    <div class = "section" style={{backgroundColor: '#cddbe7'}} >
       
     <h1 style={{
       
@@ -55,18 +55,18 @@ const Main = () =>{
     }}>Teacher, What's Next?</h1>
     
     </div>
-    <div class = "synopsis" style={{marginLeft: "30px"}}>
+    <div class = "synopsis" style={{margin: "30px"}}>
     <p>Sometimes you find yourself with 5, 10 or 15 minutes left in class and don't have the mental bandwidth to think on your feet.  </p>
     </div>
     <div>
     <h2 className="welcome" style={{
       
-      textAlign: "center",
+      textAlign: "center", backgroundColor: '#cddbe7'
       
     }}>Let's Find An Activity For You ⏰</h2>
-      <form className="row g-3" >
+      <form className="row g-3" style={{backgroundColor:'#6993b8', margin:'30px'}} >
         <div>
-        <fieldset>
+        <fieldset className="SearchBox" style={{margin: "30px", marginTop:'30px'}}>
                 <div className="form-group">
                     <label htmlFor="timeLeft">Minutes Left In Class     </label>
                     <select required className="form-control" 
@@ -102,9 +102,12 @@ const Main = () =>{
             </fieldset>
           {/* <input className="form-control" property="search" onChange={e => setQuery(e.target.value)} placeholder="Enter Key Word"/> */}
         </div>
+        <div style={{marginLeft: "30px"}}>
         <button onClick={searchAllActivities}  className="btn btn-primary">Submit</button>
+        </div>
       </form>
       
+    </div>
     </div>
     
     </>

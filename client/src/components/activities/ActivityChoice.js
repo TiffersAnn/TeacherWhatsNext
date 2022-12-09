@@ -1,15 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Activity } from "./Activity";
 import { getAllActivities } from "../../Managers/ActivityManager";
-import { getActivityById } from "../../Managers/ActivityManager";
+// import { getActivityById } from "../../Managers/ActivityManager";
 
 const ActivityChoice = () => {
 
     const [activities, setActivities] = useState([]);
 
-const getAct = () => {
-    getAllActivities().then(allActivities => setActivities(allActivities));
-  };
+    const getAct = () => {
+        getAllActivities().then(allActivities => setActivities(allActivities));
+    };
 
 
   useEffect(() => {

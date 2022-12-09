@@ -77,7 +77,7 @@ const ActivityDetails = () => {
             <p>Grade Level: {activity.grade?.level}</p>
         </div>
         <div className="detail image" style={{display: "flex", justifyContent: "center"}}>
-          <CardImg style={{width: "300px", height: "200px", textalign: "middle"}} top src={activity.imageLocation} alt={activity.title} onError={handleBrokenImage} />
+          <CardImg style={{width: "300px", height: "200px", textalign: "middle", border:'solid', borderBlockColor:'#1b2c3a'}} top src={activity.imageLocation} alt={activity.title} onError={handleBrokenImage} />
         </div>    
             <CardText style={{margin: "30px"}}>
                 {activity?.content}<br></br>
@@ -86,24 +86,24 @@ const ActivityDetails = () => {
           
             {/* making sure a user only has access to the delete button if they were the one who created it */}
             {userObject.id == activity.userProfileId 
-                ? <>
+                ? <div style={{marginLeft:'30px', marginBottom:'30px'}}>
                     <button onClick={ e => navigate(`/deleteActivity/${id}`) }>Delete</button>
                     <button onClick={ e => navigate(`/editActivity/${id}`) }>Edit</button>
-                  </>
+                  </div>
                 : ""
             }
             {activity?.comments?.map(comment => 
                 <p key={comment?.id} className="text-left px-2">Comment: {comment?.content}</p>)}
         
         
-         <CardBody>
+         <CardBody style={{display:'flex', justifyContent:'space-around'}}>
          <Link to="/activities">Go Back</Link>
             
             
              <Link to={`/activity/${id}/comments`}>
                             View Comments
              </Link>
-         <Link to={`/activities/${id}/addComment`}>
+         <Link to={`/activity/${id}/addComment`}>
                              Add A Comment
              </Link>
                     

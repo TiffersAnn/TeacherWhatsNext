@@ -8,7 +8,7 @@ export const Activity = ({ activity }) => {
     return (
 
     
-      <div style={{display:'flex', letterSpacing: '.5px', alignItems: 'center', margin: '45px', borderBottom: '1px solid blue', height: '30px', width: '500px', justifyContent: 'space-between'}}>
+      <div style={{display:'flex', letterSpacing: '.5px', alignItems: 'center', margin: '45px', borderBottom: '1px solid blue', height: '30px', width: '700px', justifyContent: 'space-between'}}>
           <Link to={`/activity/${activity.id}`}>
             
           <h5 style={{ marginRight: '15px' }}>{activity.title}</h5></Link>

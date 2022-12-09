@@ -14,31 +14,31 @@ export const CommentNew = () => {
         subject: "",
         content:"",
         userProfileId: currentUser.id,
-        activityId: id,
+        activityId: id
     })
 
     
     const handleSaveNewComment = (event) => { 
         event.preventDefault()
         const newCommentToSendToApi = {
-            subject:newComment.subject,
-            content:newComment.content,
+            subject: newComment.subject,
+            content: newComment.content,
             userProfileId: currentUser.id,
             activityId: id
         }
-        addComment(newCommentToSendToApi).then((t) => {
-                    
-                            
-            navigate(`/activities/${id}/comments`)
+        addComment(newCommentToSendToApi).then(() => {
+                
+                        
+            navigate(`/activity/${id}/comments`)
             
         });
     }
 
     const saveNewComment = (evt) => {
-        const copy = {...newComment}
-        copy[evt.target.id] = evt.target.value
-        setNewComment(copy)
-    }
+        const copy = {...newComment};
+        copy[evt.target.id] = evt.target.value;
+        setNewComment(copy);
+    };
 
     return (
         <>
@@ -47,9 +47,9 @@ export const CommentNew = () => {
                     <label htmlFor="tag">Add New Comment</label>
                     <input type="text" placeholder="Add Subject" onChange={saveNewComment} className="form-control" id="subject" />
                     <input type="text" placeholder="Add A Comment"  onChange={saveNewComment} className="form-control" id="content" />
-                <button type="submit" className="btn btn-primary mt-2" >Save</button>
+                <button type="submit" className="btn btn-primary mt-2">Save</button>
                                        
-                        <CardLink href={`/activities/${id}`}>
+                        <CardLink href={`/activity/${id}`}>
                             Back To Post
                         </CardLink>
                     

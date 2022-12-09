@@ -11,6 +11,6 @@ namespace TeacherWhatsNext
         public void Insert(Activity activity);
         public void Update(Activity activity);
         public void Delete(int id);
-        List<Activity> Search(string criterion);
+        List<Activity> Search(int subjectId, int gradeId, int timeLeftId);
     }
 }

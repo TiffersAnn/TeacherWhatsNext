@@ -64,9 +64,9 @@ namespace TeacherWhatsNext
         }
 
         [HttpGet("search")]
-        public IActionResult Search(string q)
+        public IActionResult Search(int subjectId, int timeLeftId, int gradeId)
         {
-            return Ok(_activityRepository.Search(q));
+            return Ok(_activityRepository.Search(subjectId, timeLeftId, gradeId));
         }
     }
 }
