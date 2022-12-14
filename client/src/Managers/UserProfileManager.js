@@ -1,7 +1,7 @@
 const apiUrl = "https://localhost:5001";
 
 export const login = (userObject) => {
-    return fetch(`${apiUrl}/api/userprofile/getbyemail?email=${userObject.email}`)
+  return fetch(`${apiUrl}/api/userprofile/getbyemail?email=${userObject.email}`)
     .then((r) => r.json())
       .then((userProfile) => {
         if(userProfile.id){
@@ -12,14 +12,14 @@ export const login = (userObject) => {
           return undefined
         }
       });
-  };
+};
 
   export const logout = () => {
         localStorage.clear()
   };
 
   export const register = (userObject, password) => {
-    return  fetch(`${apiUrl}/api/userprofile`, {
+    return  fetch(`${apiUrl}/api/UserProfile`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -33,9 +33,10 @@ export const login = (userObject) => {
   };
 
   export const getCurrentUser = () => {
-    const currentUser = localStorage.getItem("TWNUser");
+    const currentUser = localStorage.getItem("userProfile");
+    const userObject = JSON.parse(currentUser)
 
-    return currentUser;
+    return userObject;
   };
 
   export const getAllUsers = () => {
@@ -44,6 +45,6 @@ export const login = (userObject) => {
   };
   
   export const getUserById = (id) => {
-    return fetch(`https://localhost:5001/api/userProfile/${id}`)
+    return fetch(`https://localhost:5001/api/UserProfile/${id}`)
       .then((res) => res.json());
   };

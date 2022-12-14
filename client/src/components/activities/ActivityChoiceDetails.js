@@ -6,22 +6,23 @@ import { getActivityById } from "../../Managers/ActivityManager";
 import { getAllSubjects } from "../../Managers/SubjectManager";
 import { getAllGrades } from "../../Managers/GradeManager";
 import { getAllTimes } from "../../Managers/TimeManager";
-import {ListGroup, ListGroupItem, ListGroupItemHeading} from "reactstrap";
+import Input from "reactstrap";
 
-
-const ActivityDetails = () => {
+const ActivityChoiceDetails = () => {
     const [activity, setActivity] = useState("");
     const [grade, setGrade] = useState();
     const [subject, setSubject] = useState();
     const [timeLeft, setTimeLeft] = useState();
+    const [subjectId, setSubjectId] = useState([]);
+    const [timeLeftId, setTimeLeftId] = useState([]);
+    const [gradeId, setGradeId] = useState([]);
     // const [tag, setTag] = useState();
     const { id } = useParams();
     const navigate = useNavigate();
 
     const localUser = localStorage.getItem("userProfile")
     const userObject = JSON.parse(localUser)
-    
-    //if post image links are broken, need to replace them all with a default image
+
     const handleBrokenImage = (image) => {
         const defaultImage = "https://clemensvdlinden.com/wp-content/uploads/2015/10/learning.jpg";
         image.target.src = defaultImage;
@@ -34,7 +35,6 @@ const ActivityDetails = () => {
             .then(p => setActivity(p))
 
 
-        // getAllTags(id).then(setTag);
     });    
         
     useEffect(() => {
@@ -42,10 +42,12 @@ const ActivityDetails = () => {
         getAllSubjects(id).then(setSubject);
         getAllTimes(id).then(setTimeLeft);
     });
+    useEffect(() => {
+        getAllGrades().then(setGradeId);
+        getAllSubjects().then(setSubjectId);
+        getAllTimes().then(setTimeLeftId);
+    });
 
-    
-
-        
     if (!activity) {
         return null;
     }
@@ -97,8 +99,8 @@ const ActivityDetails = () => {
         
         
          <CardBody style={{display:'flex', justifyContent:'space-around'}}>
-         <Link to="/activities">Go Back</Link>
-            
+         {/* <Link to={`/activity/search/${subjectId}/${timeLeftId}/${gradeId}`}>Go Back</Link> */}
+         
             
              <Link to={`/activity/${id}/comments`}>
                             View Comments
@@ -118,6 +120,4 @@ const ActivityDetails = () => {
   );
 };
  
-export default ActivityDetails;
-    
-    
+export default ActivityChoiceDetails;

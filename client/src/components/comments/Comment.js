@@ -12,6 +12,7 @@ export const Comment = () => {
     const navigate = useNavigate();
     const [comments, setComments] = useState([]);
     const [activity, setActivity] = useState({});
+    
     const { id } = useParams();
 
     const getComments = () => {
@@ -52,6 +53,12 @@ export const Comment = () => {
                                 <h6>Content:</h6> {c.content}
                             </ListGroupItem>
                         </ListGroup>
+                        {currentUser.id === c.userProfileId
+                    ?<div>
+                    <button className="btn btn-danger ml-3 mb-3" onClick={() => navigate(`/commentDelete/${c.id}`)}>Delete</button> 
+                    <button className="btn btn-danger ml-3 mb-3" onClick={() => navigate(`/commentEdit/${c.id}`)}>Edit</button> 
+                    </div>
+                    :""  }
                        
                 
                 </Card></>  

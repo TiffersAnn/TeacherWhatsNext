@@ -28,7 +28,7 @@ export const CommentEdit = ()=> {
         }
         editComment(updatedComment)
             .then(() => {
-            navigate(`/activities/${commentToEdit.activityId}/Comments`);
+            navigate(`/activity/${commentToEdit.activityId}/comments`);
         });
 
     }
@@ -56,7 +56,7 @@ return (<>
                     </FormGroup>
                     
                     <Button type="submit" className="button mr-2" >Save</Button>
-                    <CardLink href={`/activities/${commentToEdit.activityId}/Comments`}>
+                    <CardLink href={`/activity/${commentToEdit.activityId}/Comments`}>
                     Back To Comments
                     </CardLink>
                     

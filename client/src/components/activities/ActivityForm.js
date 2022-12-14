@@ -62,8 +62,21 @@ export const ActivityForm = () => {
 
     
     return (
-        <form className="activityForm"style={{marginLeft: "30px"}}>
-            <h2 className="activityForm__Title">New Activity</h2>
+        <form className="activityForm"
+            style={{marginLeft: "30px",
+            display: "block",
+            width: "75%",
+            
+            padding: ".75rem",
+            marginLeft: "30px",
+            fontSize: "1.5rem",
+            lineHeight: "1.5",
+            backgroundColor: "#6993b8",
+            
+            border: "1px solid darkblue",
+            borderRadius: ".55rem"
+            }}>
+            <h2 className="activityForm__Title" style={{marginLeft:"15px"}}>New Activity</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="Title">Title:  </label>
@@ -87,6 +100,8 @@ export const ActivityForm = () => {
                         required autoFocus
                         type="text"
                         className="form-control"
+                        style={{width: "25em",
+                            marginLeft: "20px"}}
                         placeholder="Post content"
                         value={activity.Content}
                         onChange={(changeEvent) => {

@@ -21,7 +21,7 @@ export const CommentDelete= ()=> {
 const handleDelete = () => {
     deleteComment(commentToDelete.id)
         .then(() => {
-            navigate(`/posts/${commentToDelete.activityId}/Comments`)
+            navigate(`/activity/${commentToDelete.activityId}/Comments`)
         })
 };
 
@@ -31,7 +31,7 @@ return(<div className="m-5">
     <h6>Author:</h6> {commentToDelete.userProfile?.displayName}
     <h6>Content:</h6> {commentToDelete.content}<br/>
     <button className="btn btn-danger mr-5" onClick={handleDelete}>Delete</button>
-    <CardLink href={`/posts/${commentToDelete.activityId}/Comments`}>
+    <CardLink href={`/activity/${commentToDelete.activityId}/Comments`}>
         Back To Comments
     </CardLink>
     </div>)

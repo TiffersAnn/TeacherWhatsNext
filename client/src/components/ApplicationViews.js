@@ -12,8 +12,12 @@ import TimeList from "./times/TimeList";
 import GradeList from "./grades/GradeList";
 import { Comment } from "./comments/Comment";
 import ActivityEdit from "./activities/EditActivity";
-import ActivityChoice from "./activities/ActivityChoice";
+import {ActivityChoice} from "./activities/ActivityChoice";
 import { CommentNew } from "./comments/CommentNew";
+import ActivityChoiceDetails from "./activities/ActivityChoiceDetails";
+import { ActivityChoiceList } from "./activities/ActivityChoiceList";
+import { CommentEdit } from "./comments/CommentEdit";
+import { CommentDelete } from "./comments/CommentDelete";
 
 
 export default function ApplicationViews() {
@@ -32,8 +36,12 @@ export default function ApplicationViews() {
             <Route path="/grades" element={<GradeList />} />
             <Route path="/activity/:id/comments" element={<Comment />} />
             <Route path="/activity/:id/addComment" element={<CommentNew />} />
+            <Route path="/commentEdit/:id" element={<CommentEdit />} />
+            <Route path="/commentDelete/:id" element={<CommentDelete />} />
+            <Route path="/activity/search/:id" element={<ActivityChoiceDetails />} />
+            <Route path="/activity/search" element={<ActivityChoiceList />} />
 
-            <Route path="/activity/search" element={<ActivityChoice />} />
+            <Route path="/activity/search/:subjectId/:timeLeftId/:gradeId" element={<ActivityChoice />} />
 
             <Route path="*" element={<p>Whoops, nothing here...</p>} />
         </Routes>

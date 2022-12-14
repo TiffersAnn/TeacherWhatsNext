@@ -3,6 +3,7 @@ import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import { useNavigate, Link } from "react-router-dom";
 import { login } from "../Managers/UserProfileManager";
 
+
 export default function Login({setIsLoggedIn}) {
   const navigate = useNavigate();
 
@@ -24,14 +25,30 @@ export default function Login({setIsLoggedIn}) {
   };
 
   return (
-    <Form onSubmit={loginSubmit}>
+    <main className="container--login"
+      style={{marginTop:"50px"}}>
+    <Form className="form--login" onSubmit={loginSubmit}
+      style={{display: "block",
+      width: "75%",
+      
+      padding: ".75rem",
+      marginLeft: "30px",
+      fontSize: "1.5rem",
+      lineHeight: "1.5",
+      backgroundColor: "#6993b8",
+      
+      border: "1px solid darkblue",
+      borderRadius: ".55rem"
+      }}>
+      <h1 style={{marginLeft:"20px"}}>Teacher, What's Next?</h1>
+      <h2 style={{marginLeft:"20px"}}>Please sign in</h2>
       <fieldset>
         <FormGroup>
-          <Label for="email">Email</Label>
+          <Label for="email">Email:     </Label>
           <Input id="email" type="text" onChange={e => setEmail(e.target.value)} />
         </FormGroup>
         <FormGroup>
-          <Label for="password">Password</Label>
+          <Label for="password">Password:     </Label>
           <Input id="password" type="password" onChange={e => setPassword(e.target.value)} />
         </FormGroup>
         <FormGroup>
@@ -42,5 +59,6 @@ export default function Login({setIsLoggedIn}) {
         </em>
       </fieldset>
     </Form>
+    </main>
   );
 }

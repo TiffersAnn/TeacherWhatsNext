@@ -2,6 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using TeacherWhatsNext.Models;
 
 namespace TeacherWhatsNext.Repositories
@@ -17,8 +18,9 @@ namespace TeacherWhatsNext.Repositories
                 conn.Open();
                 using (var cmd = conn.CreateCommand())
                 {
-                    cmd.CommandText = @"SELECT Id, Subject, Content, UserProfileId as CommentUserProfileId, ActivityId AS CommentActivityId
-                                        FROM Comment 
+                    cmd.CommandText = @"SELECT c.Id, c.Subject, c.Content, c.UserProfileId, c.ActivityId, u.DisplayName
+                                        FROM Comment c
+                                        Left JOIN userProfile u on c.UserProfileId = u.id
                                         ";
 
 
@@ -27,16 +29,19 @@ namespace TeacherWhatsNext.Repositories
 
                     while (reader.Read())
                     {
-                        comments.Add(new Comment()
+                        Comment comment = new Comment()
                         {
                             Id = reader.GetInt32(reader.GetOrdinal("Id")),
                             Subject = reader.GetString(reader.GetOrdinal("Subject")),
                             Content = reader.GetString(reader.GetOrdinal("Content")),
-                            UserProfileId = reader.GetInt32(reader.GetOrdinal("CommentUserProfileId")),
-                            ActivityId = reader.GetInt32(reader.GetOrdinal("CommentActivityId"))
+                            UserProfileId = reader.GetInt32(reader.GetOrdinal("UserProfileId")),
+                            ActivityId = reader.GetInt32(reader.GetOrdinal("ActivityId")),
+                            UserProfile = new UserProfile()
 
+                        };
+                        comment.UserProfile.DisplayName = reader.GetString(reader.GetOrdinal("DisplayName"));
 
-                        });
+                        comments.Add(comment);
 
                     }
                     reader.Close();
@@ -65,7 +70,7 @@ namespace TeacherWhatsNext.Repositories
                             Subject = reader.GetString(reader.GetOrdinal("Subject")),
                             Content = reader.GetString(reader.GetOrdinal("Content")),
                             UserProfileId = reader.GetInt32(reader.GetOrdinal("CommentUserProfileId")),
-                            ActivityId = reader.GetInt32(reader.GetOrdinal("CommentActivity"))
+                            ActivityId = reader.GetInt32(reader.GetOrdinal("CommentActivityId"))
 
 
                         };

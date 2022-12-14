@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { NavLink as RRNavLink } from "react-router-dom";
-import { logout } from '../Managers/UserProfileManager';
+import { getCurrentUser, logout } from '../Managers/UserProfileManager';
 import {
   Collapse,
   Navbar,
@@ -10,18 +10,37 @@ import {
   NavItem,
   NavLink
 } from 'reactstrap';
+import { useParams } from "react-router-dom";
+import { getUserById } from '../Managers/UserProfileManager';
+
+    
 
 export default function Header({ isLoggedIn, setIsLoggedIn }) {
   const [isOpen, setIsOpen] = useState(false);
   const toggle = () => setIsOpen(!isOpen);
 
+  const { id } = useParams();
+  
+    const localUser = localStorage.getItem("userProfile")
+    const userObject = JSON.parse(localUser)
+    const [user, setUser] = useState("");
+
+    useEffect(
+      () => {
+          // getUserById(id).then((u) => {setUser(u)})
+          const user1 = getCurrentUser()
+          if(user1){
+            setUser(user1)
+          }
+      }, []);
+
   return (
     <div>
-      <Navbar style={{backgroundColor: '#456f93'}}>
-        <NavbarBrand style={{color:'#fff'}}>Teacher, What's Next?</NavbarBrand>
+      <Navbar style={{backgroundColor: '#cddbe7'}}>
+        <NavbarBrand style={{color:'#203344', marginLeft:'20px', fontWeight:"bold"}}>Teacher, What's Next?</NavbarBrand>
         {/* <NavbarToggler onClick={toggle} /> */}
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar style={{color:'#fff', display:'flex', flexDirection:'row', justifyContent:'space-between', marginRight:'20px'}}>
+          <Nav className="mr-auto" navbar style={{ display:'flex', flexDirection:'row', justifyContent:'space-between', marginRight:'20px'}}>
             { /* When isLoggedIn === true, we will render the Home link */}
             {isLoggedIn &&
               <>
@@ -30,26 +49,16 @@ export default function Header({ isLoggedIn, setIsLoggedIn }) {
                 </NavItem>
                 <NavItem>
                   <NavLink tag={RRNavLink} to="/activities">Activities</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={RRNavLink} to="/subjects">Subjects</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={RRNavLink} to="/grades">Grades</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={RRNavLink} to="/times">Times</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={RRNavLink} to="/users">User Profiles</NavLink>
-                </NavItem>
-              </>
-            }
-          </Nav>
-          <Nav navbar style={{color:'#fff'}}>
-            {isLoggedIn &&
-              <>
-                <NavItem>
+                </NavItem><NavItem>
+                    <NavLink tag={RRNavLink} to="/subjects">Subjects</NavLink>
+                  </NavItem><NavItem>
+                    <NavLink tag={RRNavLink} to="/grades">Grades</NavLink>
+                  </NavItem><NavItem>
+                    <NavLink tag={RRNavLink} to="/times">Times</NavLink>
+                  </NavItem><NavItem>
+                    <NavLink tag={RRNavLink} to="/users">User Profiles</NavLink>
+                  </NavItem>
+                  <NavItem>
                   <a aria-current="page" className="nav-link"
                     style={{ cursor: "pointer" }} onClick={() => {
                       logout()
@@ -58,16 +67,28 @@ export default function Header({ isLoggedIn, setIsLoggedIn }) {
                 </NavItem>
               </>
             }
-            {!isLoggedIn &&
+            {/* {isLoggedIn &&
               <>
-                <NavItem>
-                  <NavLink tag={RRNavLink} to="/login">Login</NavLink>
-                </NavItem>
-                <NavItem>
-                  <NavLink tag={RRNavLink} to="/register">Register</NavLink>
-                </NavItem>
+                {user.userType?.userObject?.id == 1
+                ?  <><NavItem>
+                  <NavLink tag={RRNavLink} to="/activities">Activities</NavLink>
+                </NavItem><NavItem>
+                    <NavLink tag={RRNavLink} to="/subjects">Subjects</NavLink>
+                  </NavItem><NavItem>
+                    <NavLink tag={RRNavLink} to="/grades">Grades</NavLink>
+                  </NavItem><NavItem>
+                    <NavLink tag={RRNavLink} to="/times">Times</NavLink>
+                  </NavItem><NavItem>
+                    <NavLink tag={RRNavLink} to="/users">User Profiles</NavLink>
+                  </NavItem></>
+                
+                : ""
+                }
               </>
-            }
+            } */}
+                   
+            
+            
           </Nav>
         </Collapse>
       </Navbar>

@@ -1,14 +1,24 @@
 import React, { useState, useEffect } from "react";
-import { Activity } from "./Activity";
-import { getAllActivities } from "../../Managers/ActivityManager";
+import { ActivityChoiceList } from "./ActivityChoiceList";
+import { useParams } from "react-router-dom";
+
+import { searchActivities } from "../../Managers/ActivityManager";
+
 // import { getActivityById } from "../../Managers/ActivityManager";
 
-const ActivityChoice = () => {
+export const ActivityChoice = () => {
 
     const [activities, setActivities] = useState([]);
+    
+    const { subjectId } = useParams();
+    const { timeLeftId } = useParams();
+    const { gradeId } = useParams();
+    const { id } = useParams();
 
     const getAct = () => {
-        getAllActivities().then(allActivities => setActivities(allActivities));
+        searchActivities(subjectId, timeLeftId, gradeId).then(allActivities => setActivities(allActivities));
+        
+        
     };
 
 
@@ -16,16 +26,20 @@ const ActivityChoice = () => {
     getAct();
   }, []);
   console.log(activities)
-  return (
+   return (
     <>
     
-    <h1>Activities for You!</h1>
+    <h1 style={{
+      
+      textAlign: "center",
+      
+    }}>Activities for You!</h1>
     <div className="container">
       <div className="row justify-content-center">
         <div className="cards-column">
           {activities?.map((activity) => (
             <>
-              <Activity key={activity.id} activity={activity} />
+              <ActivityChoiceList key={activity.id} activity={activity} />
             </>
           ))}
         </div>
@@ -35,4 +49,3 @@ const ActivityChoice = () => {
   );
 };
 
-export default ActivityChoice;
