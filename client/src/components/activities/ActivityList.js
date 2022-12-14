@@ -23,10 +23,10 @@ const ActivityList = () => {
 
   return (
     <>
-    <div style={{backgroundColor:'#cddbe7'}}>
-    <button className="btn btn-primary mt-3 mb-2" style={{marginLeft: '30px', marginTop:'20px'}} onClick={() => navigate("/createActivity")}>Add New Activity</button>
+    <div style={{backgroundColor:'#9bb7d0'}}>
+    <button className="btn btn-secondary mt-3 mb-2" style={{marginLeft: '30px', marginTop:'20px'}} onClick={() => navigate("/createActivity")}>Add New Activity</button>
     
-    <h1 style= {{textAlign: "center"}}>All Activities</h1>
+    <h1 style= {{textAlign: "center", marginBottom:'30px'}}>All Activities</h1>
     <div className="container">
       <div className="row justify-content-center">
         <div className="cards-column">

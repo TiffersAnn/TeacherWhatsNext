@@ -32,13 +32,13 @@ export default function Header({ isLoggedIn, setIsLoggedIn }) {
           if(user1){
             setUser(user1)
           }
-      }, []);
+      }, [isLoggedIn]);
 
   return (
     <div>
-      <Navbar style={{backgroundColor: '#cddbe7'}}>
-        <NavbarBrand style={{color:'#203344', marginLeft:'20px', fontWeight:"bold"}}>Teacher, What's Next?</NavbarBrand>
-        {/* <NavbarToggler onClick={toggle} /> */}
+      <Navbar style={{backgroundColor: '#cddbe7', fontWeight:"bold"}}>
+        <NavbarBrand style={{color:'#203344', marginLeft:'20px', fontWeight:"bold"}}>Teacher, What's Next? ⏰</NavbarBrand>
+        <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar style={{ display:'flex', flexDirection:'row', justifyContent:'space-between', marginRight:'20px'}}>
             { /* When isLoggedIn === true, we will render the Home link */}
@@ -47,6 +47,8 @@ export default function Header({ isLoggedIn, setIsLoggedIn }) {
                 <NavItem >
                   <NavLink tag={RRNavLink} to="/">Home</NavLink>
                 </NavItem>
+               { user.userTypeId == 1 ? 
+               <>
                 <NavItem>
                   <NavLink tag={RRNavLink} to="/activities">Activities</NavLink>
                 </NavItem><NavItem>
@@ -58,6 +60,10 @@ export default function Header({ isLoggedIn, setIsLoggedIn }) {
                   </NavItem><NavItem>
                     <NavLink tag={RRNavLink} to="/users">User Profiles</NavLink>
                   </NavItem>
+                  </>
+                  :
+                  ""
+                  }
                   <NavItem>
                   <a aria-current="page" className="nav-link"
                     style={{ cursor: "pointer" }} onClick={() => {

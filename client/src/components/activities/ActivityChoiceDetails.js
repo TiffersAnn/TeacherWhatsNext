@@ -65,7 +65,7 @@ const ActivityChoiceDetails = () => {
               alignItems: "center",
               margin: "15px",
               flexDirection: "row",
-              borderBottom: "1px solid blue",
+              borderBottom: "2px solid teal",
               height: "30px",
               width: "90%",
               justifyContent: "space-between",
@@ -89,8 +89,8 @@ const ActivityChoiceDetails = () => {
             {/* making sure a user only has access to the delete button if they were the one who created it */}
             {userObject.id == activity.userProfileId 
                 ? <div style={{marginLeft:'30px', marginBottom:'30px'}}>
-                    <button onClick={ e => navigate(`/deleteActivity/${id}`) }>Delete</button>
-                    <button style={{marginLeft:'5px'}} onClick={ e => navigate(`/editActivity/${id}`) }>Edit</button>
+                    <button className="btn btn-danger" onClick={ e => navigate(`/deleteActivity/${id}`) }>Delete</button>
+                    <button className="btn btn-secondary" style={{marginLeft:'5px'}} onClick={ e => navigate(`/editActivity/${id}`) }>Edit</button>
                   </div>
                 : ""
             }

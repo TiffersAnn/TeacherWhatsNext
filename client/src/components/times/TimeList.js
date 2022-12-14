@@ -16,15 +16,15 @@ const TimeList = () => {
     }, []);
 
     return (
-        <div className="m-5">
-            <button className="btn btn-primary mt-3 mb-2" onClick={() => navigate("/TimeForm")}>Add New Time</button>
+        <div className="m-5" style={{backgroundColor:'#cddbe7'}}>
+            <button className="btn btn-secondary mt-3 mb-2" style={{marginLeft:'45px'}}onClick={() => navigate("/TimeForm")}>Add New Time</button>
             
             <Table>
                 <thead>
                     
                     <tr>
                         <th>
-                            Time Left In Class
+                            Time Left In Class 🕘
                         </th>
                     </tr>
                     
@@ -33,7 +33,8 @@ const TimeList = () => {
                     {times.map((cat)=>(
                         <>
                         <Time key={cat.id} time = {cat}/>
-                        <button className="btn btn-danger ml-3 mb-3" onClick={() => navigate(`/TimeDelete/${cat.id}`)}>Delete</button>                                <button className="btn btn-primary ml-3 mb-3" onClick={() => navigate(`/TimeEdit/${cat.id}`)}>Edit</button>
+                        <button className="btn btn-danger ml-3 mb-3" style={{marginLeft:'45px'}} onClick={() => navigate(`/TimeDelete/${cat.id}`)}>Delete</button>                                
+                        <button className="btn btn-secondary ml-3 mb-3" style={{marginLeft:'10px'}} onClick={() => navigate(`/TimeEdit/${cat.id}`)}>Edit</button>
                         </>
                     ))}
                     </tbody>

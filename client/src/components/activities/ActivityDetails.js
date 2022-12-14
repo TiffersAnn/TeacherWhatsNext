@@ -51,22 +51,19 @@ const ActivityDetails = () => {
     }
 
    return (
-     
+    <> 
     <Card className="details">
     <div className="container">
       <div className="row justify-content-center">
         <div className="col-sm-12 col-lg-6">
           <div
             style={{
-              display: "flex",
               letterSpacing: ".5px",
-              alignItems: "center",
               margin: "15px",
-              flexDirection: "row",
-              borderBottom: "1px solid blue",
+              borderBottom: "2px solid teal",
               height: "30px",
-              width: "90%",
-              justifyContent: "space-between",
+              
+              
             }}
           >
             <strong>{activity.title}</strong>
@@ -87,8 +84,8 @@ const ActivityDetails = () => {
             {/* making sure a user only has access to the delete button if they were the one who created it */}
             {userObject.id == activity.userProfileId 
                 ? <div style={{marginLeft:'30px', marginBottom:'30px'}}>
-                    <button onClick={ e => navigate(`/deleteActivity/${id}`) }>Delete</button>
-                    <button style={{marginLeft:'5px'}} onClick={ e => navigate(`/editActivity/${id}`) }>Edit</button>
+                    <button className="btn btn-danger ml-3 mb-3" onClick={ e => navigate(`/deleteActivity/${id}`) }>Delete</button>
+                    <button className="btn btn-secondary ml-3 mb-3" style={{marginLeft:'5px'}} onClick={ e => navigate(`/editActivity/${id}`) }>Edit</button>
                   </div>
                 : ""
             }
@@ -115,6 +112,7 @@ const ActivityDetails = () => {
         </div>
     </div>
     </Card>
+    </>
   );
 };
  

@@ -22,15 +22,15 @@ const ActivityDelete = () => {
     }
 
     const Cancel = () => {
-        navigate(`/activities/${id}`)
+        navigate(`/activity/${id}`)
     }
 
     return (
         <div style={{display:'flex', flexDirection: 'column', letterSpacing: '.5px', alignItems: 'center', margin: '45px', height: '30px', width: '500px', justifyContent: 'space-between'}}>
             <h5 style={{marginBottom: '45px'}}>Are you sure you wish to delete {chosenActivity.title}?</h5>
             <div style={{display: 'flex'}}>
-                <button style={{marginRight: '10px'}} onClick={ e => Delete() }>Delete</button>
-                <button onClick={ e => Cancel() }>Cancel</button>
+                <button className="btn btn-danger"style={{marginRight: '10px'}} onClick={ e => Delete() }>Delete</button>
+                <button className="btn btn-primary" onClick={ e => Cancel() }>Cancel</button>
             </div>
         </div>
     )

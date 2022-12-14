@@ -26,15 +26,15 @@ const GradeList = () => {
     }
 
     return (
-        <div className="m-5">
-            <button className="btn btn-primary mt-3 mb-2" onClick={() => navigate("/GradeForm")}>Add New Grade Level</button>
+        <div className="m-5" style={{backgroundColor:'#cddbe7'}}>
+            <button className="btn btn-secondary mt-3 mb-2" style={{marginLeft:'45px'}}onClick={() => navigate("/GradeForm")}>Add New Grade Level</button>
             
             <Table>
                 <thead>
                     
                     <tr>
                         <th>
-                            Grade Levels
+                            Grade Levels 👨‍🎓
                         </th>
                     </tr>
                     
@@ -43,36 +43,14 @@ const GradeList = () => {
                     {grades?.map((grade)=>(
                         <>
                         <Grade key={grade.id} grade = {grade}/>
-                        <button className="btn btn-danger ml-3 mb-3" onClick={(c) => { handleDeleteClick(grade.id)}}>Delete</button>                                
-                        <button className="btn btn-primary ml-3 mb-3" onClick={() => { handleEditClick(grade.id)}}>Edit</button> 
+                        <button className="btn btn-danger ml-3 mb-3" style={{marginLeft:'45px'}} onClick={(c) => { handleDeleteClick(grade.id)}}>Delete</button>                                
+                        <button className="btn btn-secondary ml-3 mb-3" style={{marginLeft:'10px'}} onClick={() => { handleEditClick(grade.id)}}>Edit</button> 
                         </>
                     ))}
                     </tbody>
             </Table>
         </div>
-        // <div className="container">
-        //     <div className="row justify-content-center" style={{ display: 'flex', flexDirection: 'column' }}>
-        //         <h4 style={{ marginTop: '20px' }}>Grade Levels</h4>
-        //         <h5 style={{ marginRight: '15px' }}>{grades.name}</h5>
-        //         <button onClick={(e) => {
-        //             navigate('/createGrade')
-        //         }} style={{ marginTop: '15px', width: '120px' }}
-        //         >New Grade</button>
-        //         <div className="cards-column">
-        //             {grades?.map((grade) => (
-        //                 <div style={{ display: 'flex' }}>
-        //                     <Grade key={grade.id} grade={grade} />
-        //                     <button onClick={(e) => {
-        //                         handleDeleteClick(grade.id)
-        //                     }} style={{ width: '60px', height: '30px', margin: '5px' }}>Delete</button>
-        //                     <button onClick={(e) => {
-        //                         handleEditClick(grade.id)
-        //                     }} style={{ width: '43px', height: '30px', margin: '5px' }}> Edit </button>
-        //                 </div>
-        //             ))}
-        //         </div>
-        //     </div>
-        // </div>
+        
     );
 };
 

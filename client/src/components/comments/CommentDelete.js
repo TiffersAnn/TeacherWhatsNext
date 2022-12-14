@@ -3,7 +3,7 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { deleteComment, getCommentById } from "../../Managers/CommentManager";
-import { CardLink } from "reactstrap";
+import { CardLink, ListGroup, ListGroupItem } from "reactstrap";
 
 export const CommentDelete= ()=> {
  const navigate = useNavigate();
@@ -27,10 +27,13 @@ const handleDelete = () => {
 
 return(<div className="m-5">
     <h3>Are You Sure You Want To Delete This Comment?</h3>
-    <h6>Subject:</h6> {commentToDelete.subject}<br/>
-    <h6>Author:</h6> {commentToDelete.userProfile?.displayName}
-    <h6>Content:</h6> {commentToDelete.content}<br/>
-    <button className="btn btn-danger mr-5" onClick={handleDelete}>Delete</button>
+    <ListGroup>
+        <ListGroupItem>
+    <h6>Subject:</h6> {commentToDelete.subject}
+    <h6>Content:</h6> {commentToDelete.content}<br></br>
+        </ListGroupItem>
+    </ListGroup>
+    <button className="btn btn-danger mr-5" onClick={handleDelete}>Delete</button><br></br>
     <CardLink href={`/activity/${commentToDelete.activityId}/Comments`}>
         Back To Comments
     </CardLink>

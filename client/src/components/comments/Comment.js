@@ -27,43 +27,44 @@ export const Comment = () => {
 
     return (
         <div className= "CommentList">
-            <h1>{activity.title}</h1> 
+            <h1 style={{margin:'100px'}}>{activity.title}</h1> 
             
-                <CardLink href={`/activity/${id}`}>
+                <CardLink style={{marginLeft:'100px'}} href={`/activity/${id}`}>
                     Go back to post
                 </CardLink>
                
-            <section>
+        <section className="Comments" style={{display:'flex', marginLeft:'70px', marginTop:'20px'}}>
             {
             comments?.find(c=> c.activityId == id)
                 ? comments?.filter(c=> c.activityId == id).map((c)=>(<>    
                 <Card key={c.id}
                     style={{
-                        width: '18rem'
+                        width: '18rem',
+                        
                     }}>            
-                    <CardBody>
+                    <CardBody >
                         <CardTitle tag="h5">
                             Comment
                         </CardTitle>
                     </CardBody>
-                        <ListGroup flush>
+                        <ListGroup>
                             <ListGroupItem>
-                                <h6>Subject:</h6> {c.subject}<br/>
+                                <h6>Subject:</h6> {c.subject}
                                 <h6>Author:</h6> {c.userProfile?.displayName}
                                 <h6>Content:</h6> {c.content}
                             </ListGroupItem>
                         </ListGroup>
                         {currentUser.id === c.userProfileId
                     ?<div>
-                    <button className="btn btn-danger ml-3 mb-3" onClick={() => navigate(`/commentDelete/${c.id}`)}>Delete</button> 
-                    <button className="btn btn-danger ml-3 mb-3" onClick={() => navigate(`/commentEdit/${c.id}`)}>Edit</button> 
+                    <button className="btn btn-danger ml-3 mb-3" style={{margin:'10px'}} onClick={() => navigate(`/commentDelete/${c.id}`)}>Delete</button> 
+                    <button className="btn btn-secondary ml-3 mb-3" style={{margin:'10px'}} onClick={() => navigate(`/commentEdit/${c.id}`)}>Edit</button> 
                     </div>
                     :""  }
                        
                 
                 </Card></>  
             ))
-            : <h4>"No Comments"</h4>
+            : <h4 style={{marginLeft:'100px', marginTop:'20px'}}>"No Comments"</h4>
             } 
             </section>
         </div>)

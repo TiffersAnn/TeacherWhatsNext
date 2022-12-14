@@ -5,7 +5,7 @@ import { getAllSubjects } from "../Managers/SubjectManager";
 import { getAllTimes } from "../Managers/TimeManager";
 import { getAllGrades } from "../Managers/GradeManager";
 import { useNavigate } from "react-router-dom";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
@@ -52,7 +52,7 @@ const Main = () =>{
 
   return (
     <>
-    <div className='mainpage' style={{backgroundColor:'#f0f4f8'}}>
+    <div className='mainpage' style={{backgroundColor:'#cddbe7'}}>
     <div class = "section" style={{backgroundColor: '#6993b8'}} >
       
     <h1 style={{
@@ -63,8 +63,9 @@ const Main = () =>{
     
     </div>
     <div style={{backgroundColor:"#cddbe7", width:"100%", height:"70px"}}>
-    <div class = "synopsis" style={{marginTop: "40px", textAlign:"center", fontSize: "1.5rem"}}>
-    <p>Sometimes you find yourself with 5, 10 or 15 minutes left in class and don't have the mental bandwidth to think on your feet.  </p>
+    <div class = "synopsis" style={{ textAlign:"center", fontSize: "1.5rem"}}>
+      <p>    </p>
+    <h4 style={{}}>Sometimes you find yourself with 5, 10, or 15 minutes left in class and don't have the mental bandwidth to think on your feet.  </h4>
     </div>
     </div>
     <div>
@@ -73,11 +74,11 @@ const Main = () =>{
       textAlign: "center", backgroundColor: '#456f93', color:"#fff"
       
     }}>Let's Find An Activity For You ⏰</h2>
-      <form className="row g-3" style={{backgroundColor:'#2e4a62', margin:'70px', padding:'40px', border: 'solid', borderRadius:".55rem", width: "60%", display:"flex", justifyContent:"center", fontSize: "1.5rem",}} >
+      <form className="row g-3" style={{backgroundColor:'#2e4a62', margin:'50px', marginLeft:"300px", padding:'40px', border: 'solid', borderRadius:".55rem", width: "60%", fontSize: "1.5rem",}} >
         <div>
-        <fieldset className="SearchBox" style={{margin: "10px", marginTop:'30px', backgroundColor:'#6993b8', borderRadius:".55rem"}}>
-                <div className="form-group"style={{padding:'5px'}}>
-                    <label htmlFor="timeLeft">Minutes Left In Class     </label>
+        <fieldset className="SearchBox" style={{margin: "20px",  backgroundColor:'#6993b8', border: 'solid', borderRadius:".55rem"}}>
+                <div className="form-group"style={{padding:'15px'}}>
+                    <label htmlFor="timeLeft">Minutes Left In Class:     </label>
                     <select required className="form-control" 
                             property="search"
                             value={activity.TimeLeftId}
@@ -88,7 +89,7 @@ const Main = () =>{
                     </select>
                 </div>         
             
-                <div className="form-group"style={{padding:'5px'}}>
+                <div className="form-group"style={{padding:'15px'}}>
                     <label htmlFor="grade">Grade Level:  </label>
                     <select required className="form-control"
                             property="search" 
@@ -100,7 +101,7 @@ const Main = () =>{
                     </select>
                 </div>         
             
-                <div className="form-group"style={{padding:'5px'}}>
+                <div className="form-group"style={{padding:'15px'}}>
                     <label htmlFor="subject">Subject:  </label>
                     <select required className="form-control"
                             property="search" 
@@ -116,8 +117,8 @@ const Main = () =>{
         </div>
         
       </form>
-      <div style={{marginLeft:"70px"}}>
-        <button onClick={searchAllActivities}  className="btn btn-primary">Submit</button>
+      <div style={{marginLeft:"300px"}}>
+        <button onClick={searchAllActivities}  className="btn btn-secondary">Submit</button>
         </div>
     </div>
     </div>

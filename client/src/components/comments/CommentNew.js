@@ -44,11 +44,21 @@ export const CommentNew = () => {
 
     return (
         <>
-        <fieldset style={{margin: '30px'}}>
+        <fieldset>
             <form 
                 className="m-5" 
-                onSubmit={handleSaveNewComment}>
-                <div className="col-md-3"style={{display:'flex', flexDirection:'column', margin: "30px"}}>
+                onSubmit={handleSaveNewComment}
+                style={{
+            display: "block",
+                 
+            padding: ".75rem",
+            fontSize: "1.3rem",
+            lineHeight: "1.5",
+            backgroundColor: "#6993b8",
+            
+            border: "2px solid darkblue",
+            borderRadius: ".55rem"}}>
+                <div className="col-md-3"style={{}}>
                     <label style={{}}
                     htmlFor="comment">Add New Comment</label>
                     <input style={{marginTop:'10px'}}
@@ -58,21 +68,22 @@ export const CommentNew = () => {
                         onChange={saveNewComment} 
                         className="form-control" 
                         id="subject" />
-                    <input 
+                    <input style={{marginTop:'10px'}}
                         type="text" 
-                        placeholder="Add A Comment"  
+                        placeholder="Add Comment"  
                         onChange={saveNewComment} 
                         className="form-control" 
                         id="content" />
-                    <button style={{marginTop:'10px', width:'50px'}} type="submit" className="btn btn-primary">Save</button>
+                    <button style={{marginTop:'10px'}} type="submit" className="btn btn-secondary">Save</button>
                                        
-                        <CardLink href={`/activity/${id}`}>
-                            Back To Post
-                        </CardLink>
+                       
                     
                 </div>
             </form>
         </fieldset>
+        <CardLink href={`/activity/${id}`} style={{marginLeft:'70px'}}>
+                            Back To Post
+                        </CardLink>
         </>
     );
 }

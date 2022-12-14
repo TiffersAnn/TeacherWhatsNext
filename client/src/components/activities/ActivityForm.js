@@ -63,20 +63,20 @@ export const ActivityForm = () => {
     
     return (
         <form className="activityForm"
-            style={{marginLeft: "30px",
+            style={{
             display: "block",
             width: "75%",
-            
+            marginTop:"15px",
             padding: ".75rem",
-            marginLeft: "30px",
-            fontSize: "1.5rem",
+            marginLeft: "200px",
+            fontSize: "1.3rem",
             lineHeight: "1.5",
             backgroundColor: "#6993b8",
             
             border: "1px solid darkblue",
             borderRadius: ".55rem"
             }}>
-            <h2 className="activityForm__Title" style={{marginLeft:"15px"}}>New Activity</h2>
+            <h2 className="activityForm__Title" style={{textAlign:"center"}}>New Activity</h2>
             <fieldset>
                 <div className="form-group">
                     <label htmlFor="Title">Title:  </label>
@@ -84,7 +84,7 @@ export const ActivityForm = () => {
                         required autoFocus
                         type="text"
                         className="form-control"
-                        placeholder="Post title"
+                        placeholder="Activity title"
                         value={activity.Title}
                         onChange={(changeEvent) => {
                             const copy = {...activity}
@@ -100,9 +100,8 @@ export const ActivityForm = () => {
                         required autoFocus
                         type="text"
                         className="form-control"
-                        style={{width: "25em",
-                            marginLeft: "20px"}}
-                        placeholder="Post content"
+                        
+                        placeholder="Activity content"
                         value={activity.Content}
                         onChange={(changeEvent) => {
                             const copy = {...activity}
@@ -189,7 +188,7 @@ export const ActivityForm = () => {
                 </div>         
             </fieldset>
             
-            <button onClick={(clickEvent) => {handleSaveButtonClick(clickEvent)}} className="btn btn-primary">
+            <button onClick={(clickEvent) => {handleSaveButtonClick(clickEvent)}} style={{marginTop:"10px"}} className="btn btn-secondary">
                 Publish Activity
             </button>
         
