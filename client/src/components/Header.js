@@ -35,9 +35,11 @@ export default function Header({ isLoggedIn, setIsLoggedIn }) {
       }, [isLoggedIn]);
 
   return (
+    <>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
     <div>
-      <Navbar style={{backgroundColor: '#cddbe7', fontWeight:"bold"}}>
-        <NavbarBrand style={{color:'#203344', marginLeft:'20px', fontWeight:"bold"}}>Teacher, What's Next? ⏰</NavbarBrand>
+      <Navbar class="w3-monospace"style={{backgroundColor: '#cddbe7', fontWeight:"bold"}}>
+        <NavbarBrand style={{color:'#203344', marginLeft:'20px', fontWeight:"bold", fontSize:'1rem'}}>Teacher, What's Next? ⏰</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
           <Nav className="mr-auto" navbar style={{ display:'flex', flexDirection:'row', justifyContent:'space-between', marginRight:'20px'}}>
@@ -99,5 +101,6 @@ export default function Header({ isLoggedIn, setIsLoggedIn }) {
         </Collapse>
       </Navbar>
     </div>
+    </>
   );
 }

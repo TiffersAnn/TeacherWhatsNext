@@ -52,10 +52,11 @@ const Main = () =>{
 
   return (
     <>
-    <div className='mainpage' style={{backgroundColor:'#cddbe7'}}>
-    <div class = "section" style={{backgroundColor: '#6993b8'}} >
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
+    <div class="w3-monospace" style={{backgroundColor:'#cddbe7'}}>
+    <div class="w3-monospace" style={{backgroundColor: '#6993b8'}} >
       
-    <h1 style={{
+    <h1 class="w3-monospace" style={{
       
       textAlign: "center",
       
@@ -63,20 +64,20 @@ const Main = () =>{
     
     </div>
     <div style={{backgroundColor:"#cddbe7", width:"100%", height:"70px"}}>
-    <div class = "synopsis" style={{ textAlign:"center", fontSize: "1.5rem"}}>
+    <div class="w3-monospace" style={{ textAlign:"center", fontSize:"2.0rem"}}>
       <p>    </p>
-    <h4 style={{}}>Sometimes you find yourself with 5, 10, or 15 minutes left in class and don't have the mental bandwidth to think on your feet.  </h4>
+    <h3 class="w3-monospace">Sometimes you find yourself with 5, 10, or 15 minutes left in class and don't have the mental bandwidth to think on your feet.  </h3>
     </div>
     </div>
     <div>
-    <h2 className="welcome" style={{
+    <h2 class="w3-monospace" style={{
       
-      textAlign: "center", backgroundColor: '#456f93', color:"#fff"
+      textAlign: "center", backgroundColor: '#456f93', color:"#fff", width:'700px', marginLeft:'490px'
       
     }}>Let's Find An Activity For You ⏰</h2>
-      <form className="row g-3" style={{backgroundColor:'#2e4a62', margin:'50px', marginLeft:"300px", padding:'40px', border: 'solid', borderRadius:".55rem", width: "60%", fontSize: "1.5rem",}} >
+      <form className="row g-3" style={{backgroundColor:'#2e4a62', marginTop:'40px', marginLeft:"590px", padding:'40px', border: 'solid', borderRadius:".55rem", width: "30%", fontSize: "1.7rem",}} >
         <div>
-        <fieldset className="SearchBox" style={{margin: "20px",  backgroundColor:'#6993b8', border: 'solid', borderRadius:".55rem"}}>
+        <fieldset className="SearchBox" style={{margin: "10px",  backgroundColor:'#6993b8', border: 'solid', borderRadius:".55rem"}}>
                 <div className="form-group"style={{padding:'15px'}}>
                     <label htmlFor="timeLeft">Minutes Left In Class:     </label>
                     <select required className="form-control" 
@@ -117,7 +118,7 @@ const Main = () =>{
         </div>
         
       </form>
-      <div style={{marginLeft:"300px"}}>
+      <div style={{marginLeft:"600px", marginTop:'15px'}}>
         <button onClick={searchAllActivities}  className="btn btn-secondary">Submit</button>
         </div>
     </div>

@@ -52,11 +52,12 @@ const ActivityDetails = () => {
 
    return (
     <> 
-    <Card className="details">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
+    <Card className="details" style={{backgroundColor:'#f0f4f8'}}>
     <div className="container">
       <div className="row justify-content-center">
         <div className="col-sm-12 col-lg-6">
-          <div
+          <div class="w3-monospace"
             style={{
               letterSpacing: ".5px",
               margin: "15px",
@@ -68,7 +69,7 @@ const ActivityDetails = () => {
           >
             <strong>{activity.title}</strong>
             </div>
-        <div style={{margin: "15px"}}>
+        <div class="w3-monospace"style={{margin: "15px"}}>
             <p>Subject: {activity.subject?.name}</p>
             <p>Time Left:  {activity.timeLeft?.amount} mins</p>
             <p>Grade Level: {activity.grade?.level}</p>
@@ -76,9 +77,9 @@ const ActivityDetails = () => {
         <div className="detail image" style={{display: "flex", justifyContent: "center"}}>
           <CardImg style={{width: "300px", height: "200px", textalign: "middle", border:'solid', borderBlockColor:'#1b2c3a'}} top src={activity.imageLocation} alt={activity.title} onError={handleBrokenImage} />
         </div>    
-            <CardText style={{margin: "30px"}}>
+            <CardText class="w3-monospace"style={{margin: "30px", fontSize:'1rem'}}>
                 {activity?.content}<br></br>
-                <a href={activity?.contentUrl}>Link to Activity!</a>
+                <a class="w3-monospace" href={activity?.contentUrl}>Link to Activity!</a>
             </CardText>
           
             {/* making sure a user only has access to the delete button if they were the one who created it */}
@@ -94,13 +95,13 @@ const ActivityDetails = () => {
         
         
          <CardBody style={{display:'flex', justifyContent:'space-around'}}>
-         <Link to="/activities">Go Back</Link>
+         <Link to="/activities" class="w3-monospace">Go Back</Link>
             
             
-             <Link to={`/activity/${id}/comments`}>
+             <Link to={`/activity/${id}/comments`} class="w3-monospace">
                             View Comments
              </Link>
-         <Link to={`/activity/${id}/addComment`}>
+         <Link to={`/activity/${id}/addComment`} class="w3-monospace">
                              Add A Comment
              </Link>
                     

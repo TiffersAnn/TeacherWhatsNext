@@ -26,7 +26,9 @@ export const Comment = () => {
     },[]);
 
     return (
-        <div className= "CommentList">
+        <> 
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
+        <div class="w3-monospace">
             <h1 style={{margin:'100px'}}>{activity.title}</h1> 
             
                 <CardLink style={{marginLeft:'100px'}} href={`/activity/${id}`}>
@@ -67,6 +69,7 @@ export const Comment = () => {
             : <h4 style={{marginLeft:'100px', marginTop:'20px'}}>"No Comments"</h4>
             } 
             </section>
-        </div>)
+        </div>
+        </>)
     
 }

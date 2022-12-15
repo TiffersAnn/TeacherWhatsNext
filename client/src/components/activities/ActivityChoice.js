@@ -28,8 +28,8 @@ export const ActivityChoice = () => {
   console.log(activities)
    return (
     <>
-    
-    <h1 style={{
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
+    <h1 class="w3-monospace" style={{
       
       textAlign: "center",
       

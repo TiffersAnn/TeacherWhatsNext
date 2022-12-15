@@ -8,7 +8,7 @@ export const ActivityChoiceList = ({ activity }) => {
     return (
 
     
-      <div style={{display:'flex', letterSpacing: '.5px', alignItems: 'center', margin: '45px', borderBottom: '1px solid blue', height: '30px', width: '90%', justifyContent: 'space-between'}}>
+      <div style={{display:'flex', letterSpacing: '.5px', alignItems: 'center', margin: '45px', borderBottom: '1px solid blue', height: '30px', width: '75%', justifyContent: 'space-between'}}>
           <Link to={`/activity/search/${activity.id}`}>
             
           <h5 style={{ marginRight: '15px' }}>{activity.title}</h5></Link>
