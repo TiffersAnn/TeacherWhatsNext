@@ -16,7 +16,7 @@ const TimeList = () => {
     }, []);
 
     return (
-        <div className="m-5" style={{backgroundColor:'#cddbe7'}}>
+        <div className="m-5" style={{backgroundImage:'url("https://images.unsplash.com/photo-1575197478864-c83e1d2a4443?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTc5fDB8MXxzZWFyY2h8Mjh8fHRpbWV8ZW58MHx8fHwxNjcxMjIyNjI2&ixlib=rb-4.0.3&q=80&w=2430")'}}>
             <button className="btn btn-secondary mt-3 mb-2" style={{marginLeft:'45px'}}onClick={() => navigate("/TimeForm")}>Add New Time</button>
             
             <Table>

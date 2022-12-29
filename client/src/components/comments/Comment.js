@@ -28,7 +28,11 @@ export const Comment = () => {
     return (
         <> 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
-        <div class="w3-monospace">
+    <section style={{backgroundImage:'url("https://images.unsplash.com/photo-1577563908411-5077b6dc7624?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTc5fDB8MXxzZWFyY2h8MjJ8fGNvbW1lbnQlMjBidWJibGV8ZW58MHx8fHwxNjcxMjE3MTUx&ixlib=rb-4.0.3&q=80&w=2560")',
+ minHeight:'753px'}}>
+        <div class="w3-monospace" style={{minHeight:'468px',
+ marginTop:'0px',
+ transform:'translatex(4px) translatey(-64px)'}}>
             <h1 style={{margin:'100px'}}>{activity.title}</h1> 
             
                 <CardLink style={{marginLeft:'100px'}} href={`/activity/${id}`}>
@@ -42,17 +46,18 @@ export const Comment = () => {
                 <Card key={c.id}
                     style={{
                         width: '18rem',
-                        
+                        marginRight:'10px'
                     }}>            
-                    <CardBody >
+                    <CardBody style={{backgroundColor:'#e9e6e6'}} >
                         <CardTitle tag="h5">
                             Comment
                         </CardTitle>
                     </CardBody>
-                        <ListGroup>
+                        <ListGroup style={{boxShadow:'0px 0px 9px 0px #212529',
+                            transform: 'translatex(0px) translatey(0px)'}}>
                             <ListGroupItem>
-                                <h6>Subject:</h6> {c.subject}
-                                <h6>Author:</h6> {c.userProfile?.displayName}
+                                <h6>Subject:  {c.subject}</h6>
+                                <h6>Author: {c.userProfile?.displayName} </h6>
                                 <h6>Content:</h6> {c.content}
                             </ListGroupItem>
                         </ListGroup>
@@ -70,6 +75,7 @@ export const Comment = () => {
             } 
             </section>
         </div>
+        </section>
         </>)
     
 }

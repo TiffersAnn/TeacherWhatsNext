@@ -32,10 +32,10 @@ export default function Login({setIsLoggedIn}) {
       width: "75%",
       
       padding: ".75rem",
-      marginLeft: "30px",
+      marginLeft: "200px",
       fontSize: "1.5rem",
       lineHeight: "1.5",
-      backgroundColor: "#6993b8",
+      backgroundImage:'linear-gradient(to right, #667db6 0%, #0082c8 25%, #0082c8 50%, #667db6 100%)',
       
       border: "1px solid darkblue",
       borderRadius: ".55rem"
@@ -52,7 +52,7 @@ export default function Login({setIsLoggedIn}) {
           <Input id="password" type="password" onChange={e => setPassword(e.target.value)} />
         </FormGroup>
         <FormGroup>
-          <Button>Login</Button>
+          <Button style={{border: "1px solid darkblue"}}>Login</Button>
         </FormGroup>
         <em>
           Not registered? <Link to="/register">Register</Link>

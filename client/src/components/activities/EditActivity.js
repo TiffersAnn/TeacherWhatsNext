@@ -74,7 +74,21 @@ const ActivityEdit = () => {
     }
 
     return (
-        <form className="postForm">
+        <div style={{backgroundImage:'linear-gradient(to right, #20002c 0%, #cbb4d4 100%)'}}>
+        <form className="postForm"
+            style={{
+                display: "block",
+                width: "75%",
+                marginTop:"15px",
+                padding: ".75rem",
+                marginLeft: "200px",
+                fontSize: "1.3rem",
+                lineHeight: "1.5",
+                backgroundColor: "#6993b8",
+                
+                border: "1px solid darkblue",
+                borderRadius: ".55rem"
+                }}>
             <h2 className="postForm__Title">Edit Activity</h2>
             <fieldset>
                 <div className="form-group">
@@ -187,9 +201,10 @@ const ActivityEdit = () => {
             </fieldset>
             
             
-            <button className="btn btn-primary" style={{marginRight: '10px'}} onClick={ e => Edit(e) }>Edit Activity</button>
-            <button onClick={ e => Cancel() }>Cancel</button>
+            <button className="btn btn-secondary" style={{marginRight: '10px', marginTop:'10px', border:'1px solid darkblue'}} onClick={ e => Edit(e) }>Edit Activity</button>
+            <button className="btn btn-secondary" style={{marginRight: '10px', marginTop:'10px', border:'1px solid darkblue'}} onClick={ e => Cancel() }>Cancel</button>
         </form>
+        </div>
     )
 };
 

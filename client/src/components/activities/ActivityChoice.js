@@ -28,6 +28,7 @@ export const ActivityChoice = () => {
   console.log(activities)
    return (
     <>
+    <div style={{ backgroundImage:'linear-gradient(to right, #d9a7c7 0%, #fffcdc 100%)'}}>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
     <h1 class="w3-monospace" style={{
       
@@ -44,6 +45,7 @@ export const ActivityChoice = () => {
           ))}
         </div>
       </div>
+    </div>
     </div>
     </>
   );

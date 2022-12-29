@@ -62,6 +62,7 @@ export const ActivityForm = () => {
 
     
     return (
+        <div style={{backgroundImage:'linear-gradient(to right, #20002c 0%, #cbb4d4 100%)'}}>
         <form className="activityForm"
             style={{
             display: "block",
@@ -196,6 +197,7 @@ export const ActivityForm = () => {
         <Link to="/activities">Go Back</Link>
         </div>
         </form>
+        </div>
     )
 }
 

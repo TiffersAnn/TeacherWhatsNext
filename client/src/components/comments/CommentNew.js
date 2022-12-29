@@ -49,32 +49,32 @@ export const CommentNew = () => {
                 className="m-5" 
                 onSubmit={handleSaveNewComment}
                 style={{
-            display: "block",
-                 
+            
+                    boxShadow:'0px 1px 21px -1px #212529',     
             padding: ".75rem",
             fontSize: "1.3rem",
             lineHeight: "1.5",
-            backgroundColor: "#6993b8",
-            
+            backgroundImage:'linear-gradient(to right, #667db6 0%, #0082c8 25%, #0082c8 50%, #667db6 100%)',
+            width:'550px',
             border: "2px solid darkblue",
             borderRadius: ".55rem"}}>
-                <div className="col-md-3"style={{}}>
+                <div className="col-md-3"style={{width:'500px'}}>
                     <label style={{}}
                     htmlFor="comment">Add New Comment</label>
-                    <input style={{marginTop:'10px'}}
+                    <input style={{marginTop:'10px', width:'500px'}}
                         type="text" 
                         placeholder="Add Subject"
                         value={comment.subject} 
                         onChange={saveNewComment} 
                         className="form-control" 
                         id="subject" />
-                    <input style={{marginTop:'10px'}}
+                    <input style={{marginTop:'10px', width:'500px'}}
                         type="text" 
                         placeholder="Add Comment"  
                         onChange={saveNewComment} 
                         className="form-control" 
                         id="content" />
-                    <button style={{marginTop:'10px'}} type="submit" className="btn btn-secondary">Save</button>
+                    <button style={{marginTop:'10px', border: "2px solid darkblue"}} type="submit" className="btn btn-secondary">Save</button>
                                        
                        
                     

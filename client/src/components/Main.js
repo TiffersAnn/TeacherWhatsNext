@@ -10,6 +10,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
+
 const Main = () =>{
   
   // const [query, setQuery] = useState("");
@@ -53,29 +54,32 @@ const Main = () =>{
   return (
     <>
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
-    <div class="w3-monospace" style={{backgroundColor:'#cddbe7'}}>
+    <div class="w3-monospace" style={{backgroundImage:'url("https://images.unsplash.com/photo-1615988938302-bd2a5a7023bc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=MnwzNTc5fDB8MXxzZWFyY2h8MzR8fHNjaG9vbHxlbnwwfHx8fDE2NzEyMDE1NjA&ixlib=rb-4.0.3&q=80&w=2560")',
+ transform:'translatex(0px) translatey(-8px), width:"100%", height:"70px"'}}>
     <div class="w3-monospace" style={{backgroundColor: '#6993b8'}} >
       
-    <h1 class="w3-monospace" style={{
-      
+    <h1  style={{
+      transform:'translatex(0px) translatey(0px)',
+      fontFamily:'Galindo', 
       textAlign: "center",
       
     }}>Teacher, What's Next?</h1>
     
     </div>
     <div style={{backgroundColor:"#cddbe7", width:"100%", height:"70px"}}>
-    <div class="w3-monospace" style={{ textAlign:"center", fontSize:"2.0rem"}}>
-      <p>    </p>
-    <h3 class="w3-monospace">Sometimes you find yourself with 5, 10, or 15 minutes left in class and don't have the mental bandwidth to think on your feet.  </h3>
+    <div class="w3-monospace" style={{ textAlign:"center"}}>
+      
+    <h3 style={{marginBottom:"30px", paddingTop:'18px', fontSize:'1.7rem', fontStyle:'italic'}}>Sometimes you find yourself with 5, 10, or 15 minutes left in class and don't have the mental bandwidth to think on your feet.  </h3>
     </div>
     </div>
     <div>
-    <h2 class="w3-monospace" style={{
+    <h2  style={{
       
-      textAlign: "center", backgroundColor: '#456f93', color:"#fff", width:'700px', marginLeft:'490px'
+      textAlign: "center", backgroundColor: '#456f93', color:"#fff", width:'700px', transform:'translatex(0px) translatey(0px)', marginLeft:'500px', borderStyle:'solid', borderColor:'#203344',
+      fontFamily:'Galindo'
       
     }}>Let's Find An Activity For You ⏰</h2>
-      <form className="row g-3" style={{backgroundColor:'#2e4a62', marginTop:'40px', marginLeft:"590px", padding:'40px', border: 'solid', borderRadius:".55rem", width: "30%", fontSize: "1.7rem",}} >
+      <form className="row g-3" style={{backgroundColor:'#2e4a62', marginTop:'40px', marginLeft:"590px", padding:'40px', border: 'solid', borderRadius:".55rem", width: "30%", fontSize: "1.7rem", boxShadow:'0px 1px 21px -1px #212529'}} >
         <div>
         <fieldset className="SearchBox" style={{margin: "10px",  backgroundColor:'#6993b8', border: 'solid', borderRadius:".55rem"}}>
                 <div className="form-group"style={{padding:'15px'}}>

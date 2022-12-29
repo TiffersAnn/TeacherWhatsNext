@@ -54,10 +54,13 @@ const ActivityChoiceDetails = () => {
 
    return (
      
-    <Card className="details">
+    <Card className="details" style={{backgroundImage:'linear-gradient(to right, #4ca1af 0%, #c4e0e5 100%)'}}>
     <div className="container">
       <div className="row justify-content-center">
-        <div className="col-sm-12 col-lg-6">
+        <div className="col-sm-12 col-lg-6" style={{transform:'translatex(0px) translatey(0px)',
+              
+              backdropFilter: 'brightness(1.28)'
+              }}>
           <div
             style={{
               display: "flex",
@@ -83,7 +86,8 @@ const ActivityChoiceDetails = () => {
         </div>    
             <CardText style={{margin: "30px"}}>
                 {activity?.content}<br></br>
-                <a href={activity?.contentUrl}>Link to Activity!</a>
+                <a style={{color:'#34495e',
+ fontWeight:'600'}} href={activity?.contentUrl}>Link to Activity!</a>
             </CardText>
           
             {/* making sure a user only has access to the delete button if they were the one who created it */}

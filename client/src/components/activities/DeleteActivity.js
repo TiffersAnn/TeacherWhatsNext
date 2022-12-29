@@ -26,13 +26,16 @@ const ActivityDelete = () => {
     }
 
     return (
+        
         <div style={{display:'flex', flexDirection: 'column', letterSpacing: '.5px', alignItems: 'center', margin: '45px', height: '30px', width: '500px', justifyContent: 'space-between'}}>
-            <h5 style={{marginBottom: '45px'}}>Are you sure you wish to delete {chosenActivity.title}?</h5>
+            <h5 style={{marginBottom: '45px', fontSize: "1.3rem"}}>Are you sure you wish to delete {chosenActivity.title}?</h5>
             <div style={{display: 'flex'}}>
-                <button className="btn btn-danger"style={{marginRight: '10px'}} onClick={ e => Delete() }>Delete</button>
-                <button className="btn btn-primary" onClick={ e => Cancel() }>Cancel</button>
+                <button className="btn btn-danger"style={{marginRight: '10px', border: "2px solid darkblue"}} onClick={ e => Delete() }>Delete</button>
+                <button className="btn btn-secondary" style={{marginRight: '10px', border: "2px solid darkblue"}} onClick={ e => Cancel() }>Cancel</button>
             </div>
         </div>
+        
+        
     )
 }
 

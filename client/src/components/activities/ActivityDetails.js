@@ -53,10 +53,13 @@ const ActivityDetails = () => {
    return (
     <> 
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"></link>
-    <Card className="details" style={{backgroundColor:'#f0f4f8'}}>
+    <Card className="details" style={{backgroundImage:'linear-gradient(to right, #4ca1af 0%, #c4e0e5 100%)'}}>
     <div className="container">
-      <div className="row justify-content-center">
-        <div className="col-sm-12 col-lg-6">
+      <div className="row justify-content-center" >
+        <div className="col-sm-12 col-lg-6" style={{transform:'translatex(0px) translatey(0px)',
+              
+              backdropFilter: 'brightness(1.28)'
+              }}>
           <div class="w3-monospace"
             style={{
               letterSpacing: ".5px",
@@ -79,7 +82,8 @@ const ActivityDetails = () => {
         </div>    
             <CardText class="w3-monospace"style={{margin: "30px", fontSize:'1rem'}}>
                 {activity?.content}<br></br>
-                <a class="w3-monospace" href={activity?.contentUrl}>Link to Activity!</a>
+                <a class="w3-monospace" style={{color:'#34495e',
+ fontWeight:'600'}} href={activity?.contentUrl}>Link to Activity!</a>
             </CardText>
           
             {/* making sure a user only has access to the delete button if they were the one who created it */}
